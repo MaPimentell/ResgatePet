@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Localizacao;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class MapaController extends Controller
 {
@@ -29,6 +31,7 @@ class MapaController extends Controller
      */
     public function store(Request $request)
     {
+
         $user = Auth::user();
 
         $localizacao = Localizacao::where('user_id', $user->id)->get();
@@ -78,4 +81,6 @@ class MapaController extends Controller
     {
         //
     }
+
+
 }

@@ -49,6 +49,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Localizacao::class);
     }
+    public function animais()
+    {
+        return $this->hasMany(Animais::class);
+    }
 
 
 }
