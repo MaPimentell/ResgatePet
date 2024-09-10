@@ -11,18 +11,18 @@
             font-weight: 700;
             color: white;
             border-style: solid;
-            border-width: 1px;
+            border-width: 2px;
             border-radius: 5px;
             border-color: #2430dd;
             margin-left:15px;
         }
         .swal-confirmar:hover {
-            background-color: #ffffff !important;
-            color: #2430dd;
-            border-color: #2430dd;
+            color: white;
+            background-color: #1924bd;
+            border-color: #1924bd;
         }
         .swal-cancelar {
-            color: #ffffff;
+            color: white;
             font-weight: 700;
             border-style: solid;
             border-width: 1px;
@@ -32,9 +32,8 @@
             margin-right:15px;
         }
         .swal-cancelar:hover {
-            background-color: #ffffff !important;
-            color: #525252;
-            border-color: #525252;
+            background-color: #414141;
+            border-color: #414141;
         }
         .swal-dropdown {
             width: 300px;
