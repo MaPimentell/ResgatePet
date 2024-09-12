@@ -16,6 +16,7 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "i": "^0.3.7",
         "jquery": "^3.7.1",
         "jquery-mask-plugin": "^1.14.16",
         "leaflet": "^1.9.4",

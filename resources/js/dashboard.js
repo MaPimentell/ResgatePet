@@ -52,8 +52,7 @@ import Swal from 'sweetalert2';
            },
            dataType: 'json',
            success: function(response) {
-               console.log(longitude);
-               console.log(latitude);
+
            },
            error: function(xhr, status, error) {
                console.error(error);
@@ -85,39 +84,59 @@ import Swal from 'sweetalert2';
 
    obterLocalizacao();
 
-   $('#btnAdicionarAlerta').click(function(){
-       Swal.fire({
-           title: 'Seu pet sumiu?',
-           html: `
-               <div class='flex flex-col items-center'>
-                   <p class='text-center text-sm md:w-[300px]'>
-                       Crie um alerta no mapa e os usuários próximos irão ser notificados para entrar em contato.
-                   </p>
-                   <select id='myDropdown' class='swal-dropdown mt-5'>
-                       <option value='opcao1'>Opção 1</option>
-                       <option value='opcao2'>Opção 2</option>
-                       <option value='opcao3'>Opção 3</option>
-                   </select>
-               </div>
+    $('#btnAdicionarAlerta').on('click', function(){
 
-           `,
-           showCancelButton: true,
-           confirmButtonText: 'Confirmar',
-           cancelButtonText: 'Cancelar',
-           reverseButtons: true,
-           customClass: {
-               confirmButton: 'swal-confirmar',
-               cancelButton: 'swal-cancelar'
-           },
-           preConfirm: () => {
-               const selectedOption = document.getElementById('myDropdown').value;
-               return selectedOption;
-           }
-       }).then((result) => {
-           if (result.isConfirmed) {
-               const selectedOption = result.value;
-               console.log(`Opção selecionada: ${selectedOption}`);
-               // Adicione aqui o código para lidar com a opção selecionada
-           }
-       });
-   });
+     // Fazer uma requisição AJAX para obter os dados dos animais
+        console.log('teste ');
+        $.ajax({
+            url: '/alerta/getAnimais',
+            method: 'GET',
+            dataType: 'json',
+            success: function(animais) {
+                console.log('Resposta do servidor:', animais);
+
+                if (Array.isArray(animais)) {
+                    Swal.fire({
+                        title: 'Escolha um Animal',
+                        html: `
+                            <div class="grid justify-center">
+
+                                <p class="text-sm w-[300px] text-center">
+                                    Perdeu seu pet? Selecione qual deles (se tiver mais de um) e crie um alerta para que os usuários da região possam ajudar na busca.
+                                </p>
+                                <select id="customSelect" class="w-[300px] p-2 mt-5 text-sm rounded-md border">
+                                    <option value="">Escolha um animal...</option>
+                                    ${animais.map(animal => `
+                                        <option value="${animal.id}">${animal.nome}</option>
+                                    `).join('')}
+                                </select>
+                            </div>
+                        `,
+                        showCancelButton: true,
+                        confirmButtonText: 'Confirmar',
+                        cancelButtonText: 'Cancelar',
+                        reverseButtons: true,
+                        customClass: {
+                            confirmButton: 'swal-confirmar',
+                            cancelButton: 'swal-cancelar'
+                        },
+                        preConfirm: () => {
+                            const selectedOption = document.getElementById('customSelect').value;
+                            return selectedOption;
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            const selectedAnimalId = result.value;
+                            console.log(`Animal selecionado: ${selectedAnimalId}`);
+                        }
+                    });
+                } else {
+                    console.error('Dados retornados não são um array:', animais);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Erro na requisição:', textStatus, errorThrown);
+                Swal.fire('Erro!', 'Não foi possível carregar os animais.', 'error');
+            }
+        });
+    });

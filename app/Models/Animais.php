@@ -16,6 +16,8 @@ class Animais extends Model
         'nome',
         'sexo',
         'idade',
+        'tipo',
+        'raca',
         'foto'
     ];
 

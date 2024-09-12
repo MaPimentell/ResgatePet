@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Localizacao;
 use App\Models\User;
+use App\Models\Animais;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -15,7 +16,7 @@ class MapaController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -31,7 +32,6 @@ class MapaController extends Controller
      */
     public function store(Request $request)
     {
-
         $user = Auth::user();
 
         $localizacao = Localizacao::where('user_id', $user->id)->get();
@@ -81,6 +81,8 @@ class MapaController extends Controller
     {
         //
     }
+
+
 
 
 }

@@ -1,8 +1,11 @@
 <?php
 
-use App\Http\Controllers\MapaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MapaController;
+use App\Http\Controllers\AnimaisController;
+use Illuminate\Support\Facades\Log;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,6 +20,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('mapa', MapaController::class);
+    Route::get('/alerta/getAnimais', [AnimaisController::class, 'getAnimais'])->name('mapa.getAnimais.swal');
+
+
 });
 
 require __DIR__.'/auth.php';
