@@ -118,7 +118,9 @@ import Swal from 'sweetalert2';
                         reverseButtons: true,
                         customClass: {
                             confirmButton: 'swal-confirmar',
-                            cancelButton: 'swal-cancelar'
+                            cancelButton: 'swal-cancelar',
+                            popup: 'swal-popup',
+                            htmlContainer: 'swal-container'
                         },
                         preConfirm: () => {
                             const selectedOption = document.getElementById('customSelect').value;
