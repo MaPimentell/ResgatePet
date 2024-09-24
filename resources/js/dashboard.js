@@ -24,7 +24,7 @@ import Swal from 'sweetalert2';
 
 
        // Inicializando o mapa com jQuery
-       var map = L.map('map').setView([latitude, longitude], 16    ); // Coordenadas de São Paulo
+       var map = L.map('map').setView([latitude, longitude], 16 ); // Coordenadas de São Paulo
 
        // Adicionando uma camada de mapa
        var googleStreets = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
@@ -86,15 +86,12 @@ import Swal from 'sweetalert2';
 
     $('#btnAdicionarAlerta').on('click', function(){
 
-     // Fazer uma requisição AJAX para obter os dados dos animais
-        console.log('teste ');
+         // Fazer uma requisição AJAX para obter os dados dos animais
         $.ajax({
             url: '/alerta/getAnimais',
             method: 'GET',
             dataType: 'json',
             success: function(animais) {
-                console.log('Resposta do servidor:', animais);
-
                 if (Array.isArray(animais)) {
                     Swal.fire({
                         title: 'Escolha um Animal',
@@ -102,7 +99,7 @@ import Swal from 'sweetalert2';
                             <div class="grid justify-center">
 
                                 <p class="text-sm w-[300px] text-center">
-                                    Perdeu seu pet? Selecione qual deles (se tiver mais de um) e crie um alerta para que os usuários da região possam ajudar na busca.
+                                    Perdeu seu pet? Selecione qual deles e crie um alerta para que os usuários da região possam ajudar na busca.
                                 </p>
                                 <select id="customSelect" class="w-[300px] p-2 mt-5 text-sm rounded-md border">
                                     <option value="">Escolha um animal...</option>
@@ -129,7 +126,43 @@ import Swal from 'sweetalert2';
                     }).then((result) => {
                         if (result.isConfirmed) {
                             const selectedAnimalId = result.value;
-                            console.log(`Animal selecionado: ${selectedAnimalId}`);
+                            console.log('selectedAnimalId: ', selectedAnimalId);
+                            // Fazer uma nova requisição AJAX para enviar o ID do animal selecionado para a controller
+                            $.ajax({
+                                url: '/alerta/storeAlerta',  // Rota para a controller que irá salvar o alerta
+                                method: 'POST',
+                                headers: {
+                                    'X-CSRF-TOKEN': $('input[name="_token"]').val()
+                                },
+                                data: {
+                                    animal_id: selectedAnimalId
+                                },
+                                success: function(response) {
+                                    Swal.fire({
+                                        title: 'Sucesso!',
+                                        text: 'O alerta foi criado com sucesso!',
+                                        icon: 'success',
+                                        confirmButtonText: 'Ok',
+                                        customClass: {
+                                          confirmButton: 'swal-btn-sucesso',
+                                          popup: 'swal-popup-sucesso'
+                                        }
+                                      });
+                                },
+                                error: function(jqXHR, textStatus, errorThrown) {
+                                    console.error('Erro ao criar alerta:', textStatus, errorThrown);
+                                    Swal.fire({
+                                        title: 'Erro!',
+                                        text: 'Não foi possível criar o alerta.',
+                                        icon: 'error',
+                                        confirmButtonText: 'Ok',
+                                        customClass: {
+                                          confirmButton: 'swal-btn-erro',
+                                          popup: 'swal-popup-erro'
+                                        }
+                                      });
+                                }
+                            });
                         }
                     });
                 } else {
