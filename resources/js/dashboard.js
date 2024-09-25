@@ -84,6 +84,25 @@ import Swal from 'sweetalert2';
 
    obterLocalizacao();
 
+
+   function exibirAlertas(){
+    $.ajax({
+        url: '/mapa',
+        method: 'GET',
+        success: function(response) {
+            console.log(response);
+
+            var alertas = L.marker([latitude, longitude]).addTo(map).openPopup();
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error('Erro exibir alertas:', textStatus, errorThrown);
+        }
+    });
+   }
+
+   exibirAlertas();
+
+
     $('#btnAdicionarAlerta').on('click', function(){
 
          // Fazer uma requisição AJAX para obter os dados dos animais
@@ -102,10 +121,13 @@ import Swal from 'sweetalert2';
                                     Perdeu seu pet? Selecione qual deles e crie um alerta para que os usuários da região possam ajudar na busca.
                                 </p>
                                 <select id="customSelect" class="w-[300px] p-2 mt-5 text-sm rounded-md border">
-                                    <option value="">Escolha um animal...</option>
-                                    ${animais.map(animal => `
-                                        <option value="${animal.id}">${animal.nome}</option>
-                                    `).join('')}
+                                    <option selected disabled>Escolha um animal...</option>
+                                        ${animais.length === 0 ?
+                                            '<option disabled>Sem animais disponíveis</option>' :
+                                            animais.map(animal => `
+                                                <option value="${animal.id}">${animal.nome}</option>
+                                            `).join('')
+                                        }
                                 </select>
                             </div>
                         `,
@@ -171,7 +193,16 @@ import Swal from 'sweetalert2';
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.error('Erro na requisição:', textStatus, errorThrown);
-                Swal.fire('Erro!', 'Não foi possível carregar os animais.', 'error');
+                Swal.fire({
+                    title: 'Erro!',
+                    text: 'Não foi possível carregar os animais.',
+                    icon: 'error',
+                    confirmButtonText: 'Ok',
+                    customClass: {
+                        confirmButton: 'swal-btn-erro',
+                        popup: 'swal-popup-erro'
+                    }
+                });
             }
         });
     });

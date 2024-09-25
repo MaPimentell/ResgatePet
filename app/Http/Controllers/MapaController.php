@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Localizacao;
 use App\Models\User;
 use App\Models\Animais;
+use App\Models\Alerta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -16,6 +17,14 @@ class MapaController extends Controller
      */
     public function index()
     {
+        //Exibir alertas de todos os usuários
+        $alertas_usuarios = Alerta::join('localizacao', 'alertas.localizacao_id', 'localizacao.id')
+            ->select('alertas.id', 'localizacao.latitude', 'localizacao.longitude')
+            ->where('exibir', 1)->get();
+
+        Log::debug(json_encode($alertas_usuarios));
+
+        return response()->json($alertas_usuarios);
 
     }
 

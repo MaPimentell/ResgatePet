@@ -17,18 +17,16 @@ class AnimaisController extends Controller
         $user_id = Auth::id();
 
         $animais_usuario = Animais::leftJoin('alertas', 'alertas.animal_id', '=', 'animais.id')
-            ->leftjoin('users', 'animais.user_id', '=', 'users.id')
+            ->join('users', 'animais.user_id', '=', 'users.id')
             ->select('users.id as user_id', 'animais.nome', 'animais.id')
             ->where('animais.user_id', $user_id)
-            ->where(function($query) {
-                $query->whereNull('alertas.created_at')
-                      ->orWhere('alertas.created_at', '<', Carbon::today());
+            ->whereNotIn('animais.id', function($query) {
+                $query->select('alertas.animal_id')
+                    ->from('alertas')
+                    ->where('alertas.exibir', 1);
             })
+            ->distinct()
             ->get();
-
-        if($animais_usuario->isEmpty()){
-            $animais_usuario = ['Sem animais disponível'];
-        }
 
         return response()->json($animais_usuario);
     }

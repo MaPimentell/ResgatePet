@@ -11,8 +11,9 @@ class Alerta extends Model
     protected $fillable=[
         'user_id',
         'animal_id',
-        'localizacao_id',
         'exibir',
+        'latitude',
+        'longitude'
     ];
 
     public function user(){
@@ -21,7 +22,5 @@ class Alerta extends Model
     public function animal(){
         return $this->belongsTo(Animais::class);
     }
-    public function localizacao(){
-        return $this->belongsTo(Localizacao::class);
-    }
+
 }
