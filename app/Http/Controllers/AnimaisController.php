@@ -41,7 +41,8 @@ class AnimaisController extends Controller
         Alerta::create([
             'user_id' => $dados->user_id,
             'animal_id' => $dados->animal_id,
-            'localizacao_id' => $dados->localizacao_id
+            'localizacao_id' => $dados->localizacao_id,
+            'exibir' => 1
         ]);
 
         return redirect()->back();
