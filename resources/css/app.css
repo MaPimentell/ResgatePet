@@ -94,3 +94,22 @@
     border-radius: 15px;
     border-top-color: #ce2929;
 }
+
+
+.custom-marker {
+    background-color: #005DB7; /* Cor de fundo do marcador */
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    border-radius: 100px;
+    box-shadow: 0 0 0 8px rgba(0, 0, 255, 0.2),
+                0 0 15px rgba(0, 0, 255, 0.5);
+
+}
+
+
+.leaflet-popup {
+    min-width: 200px; /* Aumenta a largura mínima do popup */
+    max-width: 300px; /* Define a largura máxima do popup */
+    width: auto; /* Permite que o conteúdo ajuste a largura */
+}

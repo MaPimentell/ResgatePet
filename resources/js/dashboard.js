@@ -33,11 +33,17 @@ import Swal from 'sweetalert2';
             subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
         });
 
-        // Add the Google Streets layer to the map
+        // A
         googleStreets.addTo(map);
 
-       // Exemplo de como adicionar um marcador
-       var marker = L.marker([latitude, longitude]).addTo(map).openPopup();
+        //customização do marcador de posição atual do usuároio.
+        var customMarker = L.divIcon({
+            className: 'custom-marker', // Classe editada no app.css
+            iconSize: [15, 15], // Tamanho do ícone
+        });
+
+       // Exemplo de como adicionar um marcador.
+       var marker = L.marker([latitude, longitude], { icon: customMarker }).addTo(map).openPopup();
 
 
 
@@ -88,25 +94,56 @@ import Swal from 'sweetalert2';
 
    obterLocalizacao();
 
+   var customMarkerAlert = L.icon({
+        iconUrl: 'pinAlerta.png',
+        iconSize: [32, 32],
+        iconAnchor: [22, 38],
+        popupAnchor: [-3, -38]
+    });
+
+    //Função para conseguir clicar no marcador
+    function onClick(e) {
+        var marker = e.target;
+    }
 
    function exibirAlertas(){
-    $.ajax({
-        url: '/mapa',
-        method: 'GET',
-        success: function(response) {
+        $.ajax({
+            url: '/mapa',
+            method: 'GET',
+            success: function(response) {
+                console.log(response);
+                // Adicionar um marcador no mapa para cada alerta
+                response.forEach(function(alerta) {
+                    var marker = L.marker([alerta.latitude, alerta.longitude],{ icon: customMarkerAlert }).addTo(map);
+                    marker.bindPopup(`
+                        <div class="max-w-xs grid justify-stretch">
+                            <h3 class="font-semibold text-center text-lg">${alerta.nome}</h3>
+                            <dl class="grid grid-cols-2 mt-3 mb-3 space-y-1 items-center">
+                                <dt class="font-bold">Animal:</dt>
+                                <dd>${alerta.tipo}</dd>
 
-            // Adicionar um marcador no mapa para cada alerta
-            response.forEach(function(alerta) {
-                var marker = L.marker([alerta.latitude, alerta.longitude]).addTo(map);
-                marker.bindPopup(alerta.nome, alerta.idade);
-                marker.on('click', onClick);
+                                <dt class="font-bold">Sexo:</dt>
+                                <dd>${alerta.sexo === 'M' ? 'Macho' : alerta.sexo === 'F' ? 'Fêmea' : 'Outro'}</dd>
 
-            });
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.error('Erro exibir alertas:', textStatus, errorThrown);
-        }
-    });
+                                <dt class="font-bold">Idade:</dt>
+                                <dd>${alerta.idade} Ano(s)</dd>
+
+                                <dt class="font-bold">Raça:</dt>
+                                <dd>${alerta.raca}</dd>
+                            </dl>
+                            <button class="rounded-lg px-1 py-1 text-red font-medium text-white  bg-blue-600 border border-blue-600 hover:bg-transparent hover:text-blue-600"> Contatar</button>
+                        </div>
+
+
+                    `);
+                    marker.on('click', onClick);
+
+                });
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Erro exibir alertas:', textStatus, errorThrown);
+            }
+        });
    }
 
 
@@ -159,9 +196,9 @@ import Swal from 'sweetalert2';
                             const selectedAnimalId = result.value;
                             obterLocalizacao();
 
-                            // Fazer uma nova requisição AJAX para enviar o ID do animal selecionado para a controller
+
                             $.ajax({
-                                url: '/alerta/storeAlerta',  // Rota para a controller que irá salvar o alerta
+                                url: '/alerta/storeAlerta',
                                 method: 'POST',
                                 headers: {
                                     'X-CSRF-TOKEN': $('input[name="_token"]').val()
