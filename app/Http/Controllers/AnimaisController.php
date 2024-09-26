@@ -42,6 +42,8 @@ class AnimaisController extends Controller
             'user_id' => $dados->user_id,
             'animal_id' => $dados->animal_id,
             'localizacao_id' => $dados->localizacao_id,
+            'latitude' => $request->input('latitude'),
+            'longitude' => $request->input('longitude'),
             'exibir' => 1
         ]);
 

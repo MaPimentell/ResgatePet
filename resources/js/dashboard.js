@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
     // Variáveis globais para armazenar latitude e longitude
    var latitude;
    var longitude;
+   var map;
 
    //Obtém a localização do usuário logado
    function obterLocalizacao() {
@@ -24,7 +25,7 @@ import Swal from 'sweetalert2';
 
 
        // Inicializando o mapa com jQuery
-       var map = L.map('map').setView([latitude, longitude], 16 ); // Coordenadas de São Paulo
+       map = L.map('map').setView([latitude, longitude], 16 ); // Coordenadas de São Paulo
 
        // Adicionando uma camada de mapa
        var googleStreets = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
@@ -36,27 +37,30 @@ import Swal from 'sweetalert2';
         googleStreets.addTo(map);
 
        // Exemplo de como adicionar um marcador
-       var marker = L.marker([latitude, longitude]).addTo(map)
-           .openPopup();
+       var marker = L.marker([latitude, longitude]).addTo(map).openPopup();
+
+
 
        // Ajax para resgatar as informações de longitude e latitude do usuário.
        $.ajax({
-           url: '/mapa',
-           type: 'POST',
-           headers: {
-               'X-CSRF-TOKEN': $('input[name="_token"]').val()
-           },
-           data: {
-               latitude: latitude,
-               longitude: longitude
-           },
-           dataType: 'json',
-           success: function(response) {
+            url: '/mapa',
+            type: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': $('input[name="_token"]').val()
+            },
+            data: {
+                latitude: latitude,
+                longitude: longitude
+            },
+            dataType: 'json',
+            success: function(response) {
 
-           },
-           error: function(xhr, status, error) {
-               console.error(error);
-           }
+                exibirAlertas();
+
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
        });
    }
 
@@ -90,9 +94,14 @@ import Swal from 'sweetalert2';
         url: '/mapa',
         method: 'GET',
         success: function(response) {
-            console.log(response);
 
-            var alertas = L.marker([latitude, longitude]).addTo(map).openPopup();
+            // Adicionar um marcador no mapa para cada alerta
+            response.forEach(function(alerta) {
+                var marker = L.marker([alerta.latitude, alerta.longitude]).addTo(map);
+                marker.bindPopup(alerta.nome, alerta.idade);
+                marker.on('click', onClick);
+
+            });
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.error('Erro exibir alertas:', textStatus, errorThrown);
@@ -100,7 +109,6 @@ import Swal from 'sweetalert2';
     });
    }
 
-   exibirAlertas();
 
 
     $('#btnAdicionarAlerta').on('click', function(){
@@ -147,8 +155,10 @@ import Swal from 'sweetalert2';
                         }
                     }).then((result) => {
                         if (result.isConfirmed) {
+
                             const selectedAnimalId = result.value;
-                            console.log('selectedAnimalId: ', selectedAnimalId);
+                            obterLocalizacao();
+
                             // Fazer uma nova requisição AJAX para enviar o ID do animal selecionado para a controller
                             $.ajax({
                                 url: '/alerta/storeAlerta',  // Rota para a controller que irá salvar o alerta
@@ -157,7 +167,9 @@ import Swal from 'sweetalert2';
                                     'X-CSRF-TOKEN': $('input[name="_token"]').val()
                                 },
                                 data: {
-                                    animal_id: selectedAnimalId
+                                    animal_id: selectedAnimalId,
+                                    latitude: latitude,
+                                    longitude: longitude
                                 },
                                 success: function(response) {
                                     Swal.fire({
@@ -169,7 +181,12 @@ import Swal from 'sweetalert2';
                                           confirmButton: 'swal-btn-sucesso',
                                           popup: 'swal-popup-sucesso'
                                         }
-                                      });
+                                      }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            // Recarrega a página após clicar em OK
+                                            window.location.reload();
+                                        }
+                                    });
                                 },
                                 error: function(jqXHR, textStatus, errorThrown) {
                                     console.error('Erro ao criar alerta:', textStatus, errorThrown);

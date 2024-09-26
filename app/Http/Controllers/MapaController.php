@@ -18,14 +18,20 @@ class MapaController extends Controller
     public function index()
     {
         //Exibir alertas de todos os usuários
-        $alertas_usuarios = Alerta::join('localizacao', 'alertas.localizacao_id', 'localizacao.id')
-            ->select('alertas.id', 'localizacao.latitude', 'localizacao.longitude')
+        $alertas_usuarios = Alerta::join('animais', 'animais.id', 'alertas.animal_id')
+            ->select(   'alertas.id',
+                        'alertas.latitude',
+                        'alertas.longitude',
+                        'alertas.created_at',
+
+                        'animais.nome',
+                        'animais.sexo',
+                        'animais.tipo',
+                        'animais.raca',
+                        'animais.foto')
             ->where('exibir', 1)->get();
 
-        Log::debug(json_encode($alertas_usuarios));
-
         return response()->json($alertas_usuarios);
-
     }
 
     /**
