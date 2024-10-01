@@ -117,21 +117,34 @@ import Swal from 'sweetalert2';
                     var marker = L.marker([alerta.latitude, alerta.longitude],{ icon: customMarkerAlert }).addTo(map);
                     marker.bindPopup(`
                         <div class="max-w-xs grid justify-stretch">
-                            <h3 class="font-semibold text-center text-lg">${alerta.nome}</h3>
-                            <dl class="grid grid-cols-2 mt-3 mb-3 space-y-1 items-center">
-                                <dt class="font-bold">Animal:</dt>
-                                <dd>${alerta.tipo}</dd>
+                            <div class="justify-center mb-2">
+                                <h3 class="font-semibold text-center text-lg">${alerta.nome}</h3>
+                            </div>
+                            <div class="flex justify-center mb-2">
+                                <img src="storage/animal_photo_01_02.jpg" alt="Foto do animal"
+                                    class="object-cover w-24 h-24 rounded-full border-4 border-white drop-shadow-md ">
+                            </div>
+                            <div class="">
+                                <dl class="grid grid-cols-2 my-3 pl-2 space-y-1 justify-between items-center">
+                                    <dt class="font-bold">Animal:</dt>
+                                    <dd>${alerta.tipo}</dd>
 
-                                <dt class="font-bold">Sexo:</dt>
-                                <dd>${alerta.sexo === 'M' ? 'Macho' : alerta.sexo === 'F' ? 'Fêmea' : 'Outro'}</dd>
+                                    <dt class="font-bold">Sexo:</dt>
+                                    <dd>${alerta.sexo === 'M' ? 'Macho' : alerta.sexo === 'F' ? 'Fêmea' : 'Outro'}</dd>
 
-                                <dt class="font-bold">Idade:</dt>
-                                <dd>${alerta.idade} Ano(s)</dd>
+                                    <dt class="font-bold">Idade:</dt>
+                                    <dd>${alerta.idade} Ano(s)</dd>
 
-                                <dt class="font-bold">Raça:</dt>
-                                <dd>${alerta.raca}</dd>
-                            </dl>
-                            <button class="rounded-lg px-1 py-1 text-red font-medium text-white  bg-blue-600 border border-blue-600 hover:bg-transparent hover:text-blue-600"> Contatar</button>
+                                    <dt class="font-bold">Raça:</dt>
+                                    <dd>${alerta.raca}</dd>
+                                </dl>
+                            </div>
+                            <div class="w-full">
+                                <button class="rounded-lg w-full py-1 text-red font-medium text-white  bg-blue-600 border border-blue-600 hover:bg-transparent hover:text-blue-600"
+                                onclick="window.location.href='/contato'">
+                                    Contatar
+                                 </button>
+                            </div>
                         </div>
 
 
