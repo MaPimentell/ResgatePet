@@ -15,11 +15,29 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="flex items-center justify-between ">
-                        <div class="flex gap-1 items-center">
-
+                        <div class=" gap-1 items-center">
                             <h2 class="flex font-semibold md:font-bold  md:text-xl">
                                 Entrar em contato
                             </h2>
+                            <div>
+                                <dl class="grid grid-cols-2 space-x-2">
+
+                                    <dt>Tipo de animal: </dt>
+                                    <dd>{{ $animal->tipo }}</dd>
+
+                                    <dt>Nome:</dt>
+                                    <dd>{{ $animal->nome }}</dd>
+
+                                    <dt>Sexo: </dt>
+                                    <dd>{{ $animal->sexo }}</dd>
+
+                                    <dt>Idade: </dt>
+                                    <dd>{{ $animal->idade }}</dd>
+
+                                    <dt>Raça: </dt>
+                                    <dd>{{ $animal->raca }}</dd>
+                                </dl>
+                            </div>
                         </div>
                     </div>
                 </div>

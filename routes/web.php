@@ -23,7 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('mapa', MapaController::class);
     Route::get('/alerta/getAnimais', [AnimaisController::class, 'getAnimais'])->name('mapa.getAnimais.swal');
     Route::post('/alerta/storeAlerta', [AnimaisController::class, 'storeAlerta'])->name('mapa.storeAlerta.swal');
-    Route::get('/contato', [ContatoController::class, 'view'])->name('contato');
+    Route::get('/contato/{animal_id}', [ContatoController::class, 'view'])->name('contato');
 
 
 });

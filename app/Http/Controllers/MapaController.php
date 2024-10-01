@@ -24,6 +24,7 @@ class MapaController extends Controller
                         'alertas.longitude',
                         'alertas.created_at',
 
+                        'animais.id as animal_id',
                         'animais.nome',
                         'animais.idade',
                         'animais.sexo',
