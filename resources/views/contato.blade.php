@@ -22,7 +22,7 @@
                             <div>
                                 <dl class="grid grid-cols-2 space-x-2">
 
-                                    <dt>Tipo de animal: </dt>
+                                    <dt>Animal: </dt>
                                     <dd>{{ $animal->tipo }}</dd>
 
                                     <dt>Nome:</dt>
