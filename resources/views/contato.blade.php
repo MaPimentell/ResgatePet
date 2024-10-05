@@ -20,32 +20,32 @@
                         </h2>
                         <div class="flex">
                             <div class="w-1/3 ">
-                                <p class="text-center font-medium text-xl mb-3">{{ $infoContato->nome }}</p>
-                                <dl class="grid grid-cols-2 md:gap-x-0 ">
+                                <p class="text-center font-medium text-xl mb-5">{{ $infoContato->nome }}</p>
+                                <dl class="grid grid-cols-2 md:gap-x-0 justify-center px-9">
                                     <dt class="font-medium text-lg">Animal: </dt>
-                                    <dd class="text-lg">{{ $infoContato->tipo }}</dd>
+                                    <dd class="text-lg justify-self-end">{{ $infoContato->tipo }}</dd>
 
                                     <dt class="font-medium text-lg">Sexo: </dt>
-                                    <dd class="text-lg">@if ($infoContato->sexo === 'M') Macho @elseif ($infoContato->sexo === 'F') Fêmea @else Outro @endif</dd>
+                                    <dd class="text-lg justify-self-end">@if ($infoContato->sexo === 'M') Macho @elseif ($infoContato->sexo === 'F') Fêmea @else Outro @endif</dd>
 
                                     <dt class="font-medium text-lg">Idade: </dt>
-                                    <dd class="text-lg">{{ $infoContato->idade }}</dd>
+                                    <dd class="text-lg justify-self-end">{{ $infoContato->idade }} ano(s)</dd>
 
                                     <dt class="font-medium text-lg">Raça: </dt>
-                                    <dd class="text-lg">{{ $infoContato->raca }}</dd>
+                                    <dd class="text-lg justify-self-end">{{ $infoContato->raca }}</dd>
                                 </dl>
                             </div>
-                            <div class="w-0.5 bg-gray-300 mx-4"></div>
+                            <div class="w-0.5 bg-gray-300 mx-6"></div>
                             <div class="w-1/3">
-                                <p class="text-center font-medium text-xl mb-3">Informações de contato</p>
-                                <dl class="grid grid-cols-2 gap-x-5 mb-5">
-                                    <dt class="font-medium text-lg ">Dono: </dt>
-                                    <dd class="text-lg ">{{ $infoContato->name }}</dd>
+                                <p class="text-center font-medium text-xl mb-5">Informações de contato</p>
+                                <dl class="grid grid-cols-2 mb-5 justify-center px-6">
+                                    <dt class="font-medium text-lg ">Resposável: </dt>
+                                    <dd class="text-lg justify-self-end">{{ $infoContato->name }}</dd>
 
                                     <dt class="font-medium text-lg ">Telefone:</dt>
-                                    <dd id="celular" class="text-lg">{{ $infoContato->telefone }}</dd>
+                                    <dd id="celular" class="text-lg justify-self-end">{{ $infoContato->telefone }}</dd>
                                 </dl>
-                                <div class="inline-flex  items-center gap-3 bg-[#25d366] hover:bg-[#42dd7b] text-white font-semibold px-2 py-3 rounded-md ">
+                                <div class="flex justify-center mx-5 items-center gap-3 bg-[#25d366] hover:bg-[#42dd7b] text-white font-semibold px-2 py-3 rounded-md ">
                                     <a  target="_blank" href="https://api.whatsapp.com/send?phone={{ urlencode($infoContato->telefone) }}&text=sua_mensagem"
                                         class="">
                                         Chamar no WhatsApp
@@ -54,17 +54,25 @@
                                 </div>
                             </div>
                             <div class="flex w-1/3 justify-center mb-2">
-                                <img src="{{ asset('storage/animal_photo_01_03.jpg') }}" alt="Foto do animal"
-                                    class="object-cover w-48 h-56 rounded">
-                            </div>
+                                <div class="relative group w-48 h-56 rounded overflow-hidden">
+                                    <img id="foto" src="{{ asset('storage/animal_photo_01_03.jpg') }}" alt="Foto do animal"
+                                         class="object-cover w-full h-full transition-opacity duration-300 ease-in-out">
 
+                                    <div id="imagemAnimal" class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex justify-center items-center transition-opacity duration-300 ease-in-out">
+                                        <svg class="size-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Interface / Magnifying_Glass_Plus"> <path id="Vector" d="M7 10H10M10 10H13M10 10V7M10 10V13M15 15L21 21M10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10C17 13.866 13.866 17 10 17Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    <div id="animalModal" class="fixed inset-0 bg-black bg-opacity-75 items-center justify-center hidden z-50">
+        <span class="absolute top-4 right-4 text-white text-3xl cursor-pointer"id="fecharModal">&times;</span>
+        <img id="fotoAnimal" class="max-w-[80vw] max-h-[80vh] w-auto h-auto rounded">
+    </div>
 
 @push('scripts')
     @vite('resources/js/contato.js')
