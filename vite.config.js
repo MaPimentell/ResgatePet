@@ -8,6 +8,7 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/js/app.js',
                 'resources/js/dashboard.js',
+                'resources/js/contato.js',
             ],
             refresh: true,
         }),

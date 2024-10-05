@@ -11,10 +11,11 @@ class ContatoController extends Controller
 {
     public function view($animal_id){
 
-        $animal = Animais::where('id', $animal_id)->first();
+        $infoContato = Animais::join('users', 'animais.user_id', 'users.id')
+        ->where('animais.id', $animal_id)
+        ->first();
 
-        Log::debug($animal);
 
-        return view('contato', compact('animal'));
+        return view('contato', compact('infoContato'));
     }
 }
