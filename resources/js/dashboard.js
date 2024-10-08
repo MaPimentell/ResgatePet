@@ -33,7 +33,6 @@ import Swal from 'sweetalert2';
             subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
         });
 
-        // A
         googleStreets.addTo(map);
 
         //customização do marcador de posição atual do usuároio.
@@ -95,8 +94,8 @@ import Swal from 'sweetalert2';
    obterLocalizacao();
 
    var customMarkerAlert = L.icon({
-        iconUrl: 'pinAlerta.png',
-        iconSize: [32, 32],
+        iconUrl: 'pinPata.png',
+        iconSize: [48, 48],
         iconAnchor: [22, 38],
         popupAnchor: [-3, -38]
     });
@@ -121,7 +120,7 @@ import Swal from 'sweetalert2';
                                 <h3 class="font-semibold text-center text-lg">${alerta.nome}</h3>
                             </div>
                             <div class="flex justify-center mb-2">
-                                <img src="storage/animal_photo_01_02.jpg" alt="Foto do animal"
+                                <img src="storage/animal_photo_01_03.jpg" alt="Foto do animal"
                                     class="object-cover w-24 h-24 rounded-full border-4 border-white drop-shadow-md ">
                             </div>
                             <div class="">
