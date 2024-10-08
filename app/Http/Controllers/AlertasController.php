@@ -11,7 +11,8 @@ class AlertasController extends Controller
 
         $alertas = Alerta::join('animais', 'animais.id', 'alertas.animal_id')
         ->select(   'alertas.created_at',
-                    'animais.nome')
+                    'animais.nome',
+                    'alertas.exibir')
         ->get();
 
         return view('alertas', compact('alertas'));
