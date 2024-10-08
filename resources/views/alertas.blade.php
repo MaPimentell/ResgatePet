@@ -14,8 +14,13 @@
                                 Seus alertas
                             </h2>
                         </div>
-                        <div class="border-l-4 border-blue-600 mt-10 p-10 min-w-full shadow-xl shadow-slate-200 rounded-lg" style="box-shadow: 0 5px 20px -5px rgba(0, 0, 0, 0.2);">
-                            teste
+                        <div class="md:grid grid-cols-2 gap-4">
+                        @foreach ($alertas as $alerta)
+                            <div class="flex justify-between border-b-4 border-blue-600 mt-10 p-5 min-w-full rounded-lg" style="box-shadow: 0 5px 17px -5px rgba(0, 0, 0, 0.2);">
+                                <h2 class="font-semibold text-lg">{{ $alerta->nome }}</h2>
+                                <span class="text-gray-500 text-sm">Criado em: {{ \Carbon\Carbon::parse($alerta->created_at)->format('d/m/Y') }}</span>
+                            </div>
+                        @endforeach
                         </div>
 
                     </div>
