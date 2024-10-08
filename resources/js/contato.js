@@ -1,8 +1,6 @@
 import $ from 'jquery';
 import 'jquery-mask-plugin';
-// import 'select2';
-// import 'leaflet';
-// import Swal from 'sweetalert2';
+
 
 
 //Mascára para o número de celular

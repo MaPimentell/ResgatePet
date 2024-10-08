@@ -26,7 +26,6 @@
                             <div class="md:w-1/3 md:mb-0 mb-8">
                                 <p class="text-center font-medium text-xl mb-5">{{ $infoContato->nome }}</p>
                                 <dl class="grid grid-cols-2 md:px-9 px-5">
-
                                     <dt class="font-medium md:text-lg md:justify-self-auto">Animal: </dt>
                                     <dd class="md:text-lg justify-self-end">{{ $infoContato->tipo }}</dd>
 
@@ -38,7 +37,6 @@
 
                                     <dt class="font-medium md:text-lg md:justify-self-auto">Raça: </dt>
                                     <dd class="md:text-lg justify-self-end">{{ $infoContato->raca }}</dd>
-
                                 </dl>
                             </div>
                             <div class="w-0.5 bg-gray-300 mx-6"></div>
