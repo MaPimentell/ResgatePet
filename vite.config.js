@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/js/dashboard.js',
                 'resources/js/contato.js',
                 'resources/js/alertas.js',
+                'resources/js/cadastro.js',
             ],
             refresh: true,
         }),

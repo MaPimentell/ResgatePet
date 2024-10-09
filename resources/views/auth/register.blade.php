@@ -16,6 +16,13 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+         <!-- Phone Address -->
+         <div class="mt-4">
+            <x-input-label for="telefone" :value="__('Phone')" />
+            <x-text-input id="telefone" class="block mt-1 w-full" type="text" name="telefone" :value="old('telefone')" required autocomplete="telefone" maxlength="15" />
+            <x-input-error :messages="$errors->get('telefone')" class="mt-2" />
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
@@ -49,4 +56,8 @@
             </x-primary-button>
         </div>
     </form>
+@push('scripts')
+    @vite('resources/js/cadastro.js')
+@endpush
 </x-guest-layout>
+
