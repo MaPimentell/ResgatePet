@@ -75,8 +75,14 @@
                                                     </button>
                                                 </form>
                                             </div>
+                                        @elseif ($alerta->resgatado == 0 && $alerta->exibir == 0)
+                                            <div class="mt-5">
+                                                <span class="font-medium text-lg">Alerta desativado!</span>
+                                            </div>
                                         @elseif ($alerta->resgatado == 1)
-
+                                            <div class="mt-5">
+                                                <span class="font-medium text-lg">Animal Resgatado!</span>
+                                            </div>
                                         @endif
                                     </div>
                                 @endif
