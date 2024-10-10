@@ -11,9 +11,10 @@ class Alerta extends Model
     protected $fillable=[
         'user_id',
         'animal_id',
-        'exibir',
         'latitude',
-        'longitude'
+        'longitude',
+        'exibir',
+        'resgatado'
     ];
 
     public function user(){
