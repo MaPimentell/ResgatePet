@@ -28,24 +28,28 @@
                                             <div class="flex font-medium items-center gap-3">Status: ativo <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-lg"></div></div>
                                         </div>
                                         <span class="text-gray-500 text-sm">Criado {{ $alerta->created_at->DiffForHumans() }}</span>
-                                        <div class="flex justify-between mt-5 space-x-4">
-                                            <form action="{{ route('desativaAlerta', ['alerta_id' => $alerta->id]) }}" method="POST" class="w-1/3">
-                                                @csrf
-                                                @method('PUT')
-                                                <button class="px-2 py-2 border-2 text-sm font-semibold border-blue-600 hover:bg-blue-600 hover:text-white text-blue-600 bg-transparent rounded-md w-full">
-                                                    Desativar
-                                                </button>
-                                            </form>
-                                            <a href="{{ route('contato', ['animal_id' => $alerta->animal_id]) }}" class="flex justify-center w-1/3 px-2 py-2 border-2 text-sm font-semibold border-blue-600 hover:bg-blue-600 hover:text-white text-blue-600 bg-transparent rounded-md">
-                                                Página de Contato
-                                            </a>
-                                            <form action="{{ route('alertasUsuario.animalResgatado', ['alerta_id' => $alerta->id]) }}" method="POST" class="flex justify-center w-1/3">
-                                                @csrf
-                                                @method('PUT')
-                                                <button type="submit" class="px-2 py-2 border-2 text-sm font-semibold border-blue-600 bg-blue-600 text-white hover:text-blue-600 hover:bg-transparent rounded-md">
-                                                    Meu pet foi resgatado
-                                                </button>
-                                            </form>
+                                        <div class="md:flex md:justify-between md:flex-row md:space-x-4    flex-col  mt-5">
+                                            <div class="md:flex md:gap-0 mb-2 md:mb-0 md:w-full md:space-x-4    grid grid-cols-2 gap-2 ">
+                                                <form action="{{ route('desativaAlerta', ['alerta_id' => $alerta->id]) }}" method="POST" class=" w-full">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button class="md:text-sm text-xs w-full px-2 py-2 border-2 font-semibold border-blue-600 hover:bg-blue-600 hover:text-white text-blue-600 bg-transparent rounded-md">
+                                                        Desativar
+                                                    </button>
+                                                </form>
+                                                <a href="{{ route('contato', ['animal_id' => $alerta->animal_id]) }}" class="flex justify-center  w-full px-2 py-2 border-2 md:text-sm text-xs font-semibold border-blue-600 hover:bg-blue-600 hover:text-white text-blue-600 bg-transparent rounded-md ">
+                                                    Página de Contato
+                                                </a>
+                                            </div>
+                                            <div class="md:w-1/3">
+                                                <form action="{{ route('alertasUsuario.animalResgatado', ['alerta_id' => $alerta->id]) }}" method="POST" class="md:justify-center  flex justify-start w-full">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button type="submit" class="md:whitespace-nowrap md:text-sm w-full px-2 py-2 border-2 text-xs font-semibold border-blue-600 bg-blue-600 text-white hover:text-blue-600 hover:bg-transparent rounded-md">
+                                                        Meu pet foi resgatado
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 @endif
@@ -76,16 +80,16 @@
                                                 <div class="flex font-medium items-center gap-3">Status: Inativo <div class="w-3 h-3 bg-gray-400 rounded-full shadow-lg"></div></div>
                                             </div>
                                             <span class="text-gray-500 text-sm">Criado {{ $alerta->created_at->DiffForHumans() }}</span>
-                                            <div class="flex justify-between pt-5">
+                                            <div class="md:flex justify-between items-center pt-5">
                                                 @if($alerta->resgatado == 0 && $alerta->exibir == 0)
-                                                    <div>
-                                                        <span class="font-medium md:text-lg">Alerta desativado</span>
+                                                    <div class="md:w-full md:mb-0 mb-2">
+                                                        <span class="md:text-lg  md:font-medium ">Alerta desativado</span>
                                                     </div>
-                                                    <div class="flex justify-center">
-                                                        <form action="{{ route('alertasUsuario.animalResgatado', ['alerta_id' => $alerta->id]) }}" method="POST" class="flex justify-center w-1/3">
+                                                    <div class="md:flex justify-center w-full ">
+                                                        <form action="{{ route('alertasUsuario.animalResgatado', ['alerta_id' => $alerta->id]) }}" method="POST" class="md:flex justify-center w-full">
                                                             @csrf
                                                             @method('PUT')
-                                                            <button type="submit" class="px-8 py-2 whitespace-nowrap border-2 text-sm font-semibold border-blue-600 bg-blue-600 text-white hover:text-blue-600 hover:bg-transparent rounded-md">
+                                                            <button type="submit" class=" md:text-sm text-xs w-full px-8 py-2 whitespace-nowrap border-2  font-semibold border-blue-600 bg-blue-600 text-white hover:text-blue-600 hover:bg-transparent rounded-md">
                                                                 Meu pet foi resgatado
                                                             </button>
                                                         </form>
