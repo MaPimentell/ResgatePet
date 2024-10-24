@@ -62,3 +62,18 @@
         </div>
     </form>
 </section>
+
+@if(session('cadastro_atualizado'))
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        Swal.fire({
+            text: '{{ session('cadastro_atualizado') }}',
+            icon: 'success',
+            confirmButtonText: 'Confirmar',
+            customClass: {
+                confirmButton: 'swal-btn-sucesso',
+                popup: 'swal-popup-sucesso'
+            }
+        });
+    </script>
+@endif

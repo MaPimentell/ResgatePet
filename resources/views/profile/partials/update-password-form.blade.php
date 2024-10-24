@@ -46,3 +46,18 @@
         </div>
     </form>
 </section>
+
+@if(session('senha_atulizada'))
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        Swal.fire({
+            text: '{{ session('senha_atulizada') }}',
+            icon: 'success',
+            confirmButtonText: 'Confirmar',
+            customClass: {
+                confirmButton: 'swal-btn-sucesso',
+                popup: 'swal-popup-sucesso'
+            }
+        });
+    </script>
+@endif

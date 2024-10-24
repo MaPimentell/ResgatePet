@@ -7,6 +7,6 @@ Processos para executar o projeto
     php artisan key:generate
     php artisan storage:link
     php artisan migrate
-    php artisan scheduler:run
+    php artisan schedule:run
     php artisan serve
     npm run dev

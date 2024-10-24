@@ -16,7 +16,7 @@
                         {{ __('Mapa') }}
                     </x-nav-link>
                     <x-nav-link :href="route('alertasUsuario')" :active="request()->routeIs('alertasUsuario')">
-                        {{ __('Seus alertas') }}
+                        {{ __('Seus Alertas') }}
                     </x-nav-link>
                     <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                         {{ __('Seu Perfil') }}
