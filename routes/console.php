@@ -10,4 +10,4 @@ Artisan::command('atualizaAlertas', function () {
     AtualizaAlertas::dispatch();
 })->purpose('atualiza alertas expirados');
 
-Schedule::command('atualizaAlertas')->everySecond();
+Schedule::command('atualizaAlertas')->everyMinute();
