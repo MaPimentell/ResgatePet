@@ -12,6 +12,10 @@ use Carbon\Carbon;
 class AnimaisController extends Controller
 {
 
+    public function view(){
+        
+    }
+
     public function getAnimais()
     {
         $user_id = Auth::id();

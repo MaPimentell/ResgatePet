@@ -1,13 +1,13 @@
 <x-app-layout>
    <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Mapa') }}
+            {{ __('Mapa de alertas') }}
         </h2>
     </x-slot>
 
     <div class="py-7 md:py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white overflow-hidden border-t-4 border-blue-600 shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div class="flex items-center justify-between ">
                         <div class="flex gap-1 items-center">
