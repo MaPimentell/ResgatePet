@@ -7,6 +7,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 use App\Models\Alerta;
 
 class AtualizaAlertas implements ShouldQueue
@@ -29,5 +30,7 @@ class AtualizaAlertas implements ShouldQueue
         Alerta::where('created_at', '<=', now()->subDay())
         ->where('exibir', 1)
         ->update(['exibir' => 0]);
+
+        Log::debug('teste');
     }
 }

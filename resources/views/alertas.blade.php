@@ -25,7 +25,12 @@
                                     <div class="border-l-4 border-blue-600 mt-10 p-5 min-w-full rounded-lg" style="box-shadow: 0 5px 17px -5px rgba(0, 0, 0, 0.4);">
                                         <div class="flex justify-between">
                                             <h2 class="font-semibold text-lg">{{ $alerta->nome }}</h2>
-                                            <div class="flex font-medium items-center gap-3">Status: ativo <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-lg"></div></div>
+                                            <div class="flex font-medium items-center gap-3">Status: ativo 
+                                                <span class="relative flex h-3 w-3">
+                                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                                    <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                                                </span>
+                                            </div>
                                         </div>
                                         <span class="text-gray-500 text-sm">Criado {{ $alerta->created_at->DiffForHumans() }}</span>
                                         <div class="md:flex md:justify-between md:flex-row md:space-x-4    flex-col  mt-5">
