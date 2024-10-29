@@ -14,6 +14,11 @@ class AnimaisController extends Controller
 
     public function view(){
         
+        $user = Auth::id();
+        
+        $animais = Animais::where('user_id', $user)->get();
+        
+        return view('perfilAnimais', compact('animais'));
     }
 
     public function getAnimais()

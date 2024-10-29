@@ -27,10 +27,10 @@ class AtualizaAlertas implements ShouldQueue
      */
     public function handle(): void
     {
+       
         Alerta::where('created_at', '<=', now()->subDay())
         ->where('exibir', 1)
         ->update(['exibir' => 0]);
-
-        Log::debug('teste');
+        
     }
 }

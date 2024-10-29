@@ -23,7 +23,6 @@ import Swal from 'sweetalert2';
        latitude = position.coords.latitude;
        longitude = position.coords.longitude;
 
-
        // Inicializando o mapa com jQuery
        map = L.map('map').setView([latitude, longitude], 16 ); // Coordenadas de São Paulo
 
@@ -95,7 +94,7 @@ import Swal from 'sweetalert2';
 
    var customMarkerAlert = L.icon({
         iconUrl: 'pinPata.png',
-        iconSize: [48, 48],
+        iconSize: [52, 52],
         iconAnchor: [22, 38],
         popupAnchor: [-3, -38]
     });

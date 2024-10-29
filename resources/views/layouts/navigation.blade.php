@@ -21,7 +21,7 @@
                     <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                         {{ __('Seu Perfil') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
+                    <x-nav-link :href="route('animais.profile')" :active="request()->routeIs('animais.profile')">
                         {{ __('Perfil pets') }}
                     </x-nav-link>
                 </div>

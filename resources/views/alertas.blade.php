@@ -5,13 +5,13 @@
         </h2>
     </x-slot>
 
-    <div class="py-7 md:py-12">
+    <div class="py-12">
         <div class="max-w-7xl mx-auto px-3 lg:px-8">
             <div class="bg-white overflow-hidden border-t-4 border-blue-600 shadow-sm rounded-lg mb-10">
                 <div class="p-6 text-gray-900">
                     <div class="flex gap-1 items-center">
-                        <h2 class="flex font-semibold md:font-bold md:text-xl">
-                            Alertas ativos
+                        <h2 class="flex font-medium md:font-bold md:text-xl text-gray-900">
+                            Status ativos
                         </h2>
                     </div>
                     <div class="md:grid grid-cols-2 gap-4">
@@ -25,7 +25,7 @@
                                     <div class="border-l-4 border-blue-600 mt-10 p-5 min-w-full rounded-lg" style="box-shadow: 0 5px 17px -5px rgba(0, 0, 0, 0.4);">
                                         <div class="flex justify-between">
                                             <h2 class="font-semibold text-lg">{{ $alerta->nome }}</h2>
-                                            <div class="flex font-medium items-center gap-3">Status: ativo 
+                                            <div class="flex font-medium items-center gap-3">Ativo 
                                                 <span class="relative flex h-3 w-3">
                                                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                                                     <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
@@ -47,7 +47,7 @@
                                                 </a>
                                             </div>
                                             <div class="md:w-1/3">
-                                                <form action="{{ route('alertasUsuario.animalResgatado', ['alerta_id' => $alerta->id]) }}" method="POST" class="md:justify-center  flex justify-start w-full">
+                                                <form action="{{ route('alertasUsuario.animalResgatado', ['alerta_id' => $alerta->id]) }}" method="POST" class="md:justify-center flex justify-start w-full">
                                                     @csrf
                                                     @method('PUT')
                                                     <button type="submit" class="md:whitespace-nowrap md:text-sm w-full px-2 py-2 border-2 text-xs font-semibold border-blue-600 bg-blue-600 text-white hover:text-blue-600 hover:bg-transparent rounded-md">

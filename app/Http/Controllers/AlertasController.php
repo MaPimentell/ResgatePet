@@ -13,8 +13,6 @@ class AlertasController extends Controller
 
         $user_id = Auth::id();
 
-        Log::debug($user_id);
-
         $alertas = Alerta::join('animais', 'animais.id', 'alertas.animal_id')
         ->join('users', 'users.id', 'alertas.user_id')
         ->select(   'alertas.id',
