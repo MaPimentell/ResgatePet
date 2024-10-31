@@ -133,7 +133,7 @@ import Swal from 'sweetalert2';
                                     <dt class="font-bold">Idade:</dt>
                                     <dd>${alerta.idade} Ano(s)</dd>
 
-                                    <dt class="font-bold">Raça:</dt>
+                                    <dt class="font-bold self-start">Raça:</dt>
                                     <dd>${alerta.raca}</dd>
                                 </dl>
                             </div>
