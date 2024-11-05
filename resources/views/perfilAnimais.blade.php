@@ -9,10 +9,11 @@
         <div class="max-w-7xl mx-auto px-3 lg:px-8">
             <div class="bg-white overflow-hidden border-t-4 border-blue-600 shadow-sm rounded-lg mb-10">
                 <div class="p-6 text-gray-900">
-                    <div class="flex gap-1 items-center">
+                    <div class="flex gap-1 items-center md:justify-between">
                         <h2 class="flex font-medium md:font-bold text-xl text-gray-900">
                             Animais cadastrados
                         </h2>
+                        <a href="{{ route('animais.cadastro')}}">Cadastrar novo animal</a>
                     </div>
                     <div class="md:grid grid-cols-2 gap-4 p-3">
                         @if($animais->isEmpty()) 
@@ -31,13 +32,9 @@
                                         <div class="text-gray-500 md:mb-0 mb-6"></div>
                                         <div class="flex md:justify-normal justify-between space-x-4 mt-5">
                                             <div class="md:flex md:gap-0 mb-2 md:mb-0  md:space-x-4">
-                                                <form action="" method="POST" class="">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <button class="md:text-sm text-xs  px-6 py-2 border-2 font-semibold border-red-600 hover:bg-red-600 hover:text-white text-red-600 bg-transparent rounded-md">
-                                                        Excluir
-                                                    </button>
-                                                </form>
+                                                <button data-id="{{ $animal->id }}" class="btn-deletaAnimal md:text-sm text-xs  px-6 py-2 border-2 font-semibold border-red-600 hover:bg-red-600 hover:text-white text-red-600 bg-transparent rounded-md">
+                                                    Excluir
+                                                </button>
                                             </div>
                                             <div class="">
                                                 <a href="" class="flex justify-center   px-6 py-2 border-2 md:text-sm text-xs font-semibold border-blue-600 hover:bg-blue-600 hover:text-white text-blue-600 bg-transparent rounded-md ">
@@ -58,7 +55,7 @@
             </div>
         </div>
     </div>
-{{-- @push('scripts')
-    @vite('resources/js/alertas.js')
-@endpush --}}
+@push('scripts')
+    @vite('resources/js/perfilAnimais.js')
+@endpush
 </x-app-layout>

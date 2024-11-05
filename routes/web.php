@@ -18,12 +18,16 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/cadastroAnimal', [AnimaisController::class, 'viewCadastro'])->name('animais.cadastro');
+    Route::post('/cadastroAnimal/store', [AnimaisController::class, 'store'])->name('animais.store');
+
     Route::get('/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/perfil', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/perfil', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
     
     Route::get('/perfilAnimal', [AnimaisController::class, 'view'])->name('animais.profile');
+    Route::delete('/deletaAnimais/{animal_id}', [AnimaisController::class, 'delete'])->name('animais.delete');
 
     Route::resource('mapa', MapaController::class);
     Route::get('/alerta/getAnimais', [AnimaisController::class, 'getAnimais'])->name('mapa.getAnimais.swal');

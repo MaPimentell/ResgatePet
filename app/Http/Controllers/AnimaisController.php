@@ -21,6 +21,52 @@ class AnimaisController extends Controller
         return view('perfilAnimais', compact('animais'));
     }
 
+    public function viewCadastro(){
+
+        return view('auth.animalRegister');
+    }
+
+    public function store(Request $request){
+        $user = Auth::id();
+
+        $nomeFormatado = ucwords(strtolower(trim($request->nome)));
+        $racaFormatado = ucwords(strtolower(trim($request->raca)));
+
+        $animal = Animais::create([
+            'user_id' => $user,
+            'nome' => $nomeFormatado,
+            'sexo' => $request->sexo,
+            'idade' => $request->idade,
+            'tipo' => $request->animal,
+            'raca' => $racaFormatado,
+            'foto' => '', 
+        ]);
+
+
+        if ($request->hasFile('fotoAnimal') && $request->file('fotoAnimal')->isValid()) {
+            
+            $animalId = $animal->id;
+            $filename = "animal_foto_{$user}_{$animalId}." . $request->file('fotoAnimal')->getClientOriginalExtension();
+    
+            
+            $path = $request->file('fotoAnimal')->storeAs("images/animais", $filename, 'public');
+    
+            
+            $animal->update(['foto' => $path]);
+        } else {
+            
+            return back()->withErrors(['fotoAnimal' => 'O upload da foto do animal falhou.']);
+        }
+        return redirect('dashboard')->with('animalCadastrado', 'Animal cadastrado com sucesso!');
+    
+    }
+
+    public function delete($animal_id){
+        $animal = Animais::find($animal_id)->delete();
+
+        return redirect()->back();
+    }       
+
     public function getAnimais()
     {
         $user_id = Auth::id();
