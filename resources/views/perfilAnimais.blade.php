@@ -9,11 +9,16 @@
         <div class="max-w-7xl mx-auto px-3 lg:px-8">
             <div class="bg-white overflow-hidden border-t-4 border-blue-600 shadow-sm rounded-lg mb-10">
                 <div class="p-6 text-gray-900">
-                    <div class="flex gap-1 items-center md:justify-between">
-                        <h2 class="flex font-medium md:font-bold text-xl text-gray-900">
+                    <div class="md:flex gap-1 items-center md:justify-between">
+                        <h2 class="font-medium md:font-bold text-xl text-gray-900">
                             Animais cadastrados
                         </h2>
-                        <a href="{{ route('animais.cadastro')}}">Cadastrar novo animal</a>
+                        <a href="{{ route('animais.cadastro')}}">
+                            <button class="px-3 py-2 rounded-md border-2 border-blue-600 bg-blue-600 hover:bg-transparent hover:text-blue-600 text-white font-medium space-x-1">
+                                <span >Cadastrar novo animal</span> <span class="font-semibold text-xl">+</span>
+                                 
+                            </button>
+                        </a>
                     </div>
                     <div class="md:grid grid-cols-2 gap-4 p-3">
                         @if($animais->isEmpty()) 
