@@ -31,8 +31,6 @@ class MapaController extends Controller
                         'animais.foto')
             ->where('exibir', 1)->get();
 
-        Log::debug(json_encode($alertas_usuarios));
-
         return response()->json($alertas_usuarios);
     }
 
