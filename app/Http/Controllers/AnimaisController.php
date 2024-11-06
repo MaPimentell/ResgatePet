@@ -55,16 +55,16 @@ class AnimaisController extends Controller
             $animal->update(['foto' => $path]);
         } else {
             
-            return back()->withErrors(['fotoAnimal' => 'O upload da foto do animal falhou.']);
+            $animal->update(['foto' => 'images/animais/default_pet.jpg']);
         }
-        return redirect('dashboard')->with('animalCadastrado', 'Animal cadastrado com sucesso!');
+        return redirect('perfilAnimal')->with('animalCadastrado', 'Animal cadastrado com sucesso!');
     
     }
 
     public function delete($animal_id){
         $animal = Animais::find($animal_id)->delete();
 
-        return redirect()->back();
+        return response()->json(['success' => true]);
     }       
 
     public function getAnimais()

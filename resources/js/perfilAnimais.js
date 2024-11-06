@@ -8,7 +8,6 @@ import Swal from 'sweetalert2';
 $('.btn-deletaAnimal').on('click', function(){
 
     var animal_id = $(this).data('id');
-    console.log(animal_id);
     
     Swal.fire({
         title: 'Tem certeza?',

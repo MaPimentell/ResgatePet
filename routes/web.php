@@ -19,7 +19,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/cadastroAnimal', [AnimaisController::class, 'viewCadastro'])->name('animais.cadastro');
-    Route::post('/cadastroAnimal/store', [AnimaisController::class, 'store'])->name('animais.store');
+    Route::put('/cadastroAnimal/store', [AnimaisController::class, 'store'])->name('animais.store');
 
     Route::get('/perfil', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/perfil', [ProfileController::class, 'update'])->name('profile.update');
