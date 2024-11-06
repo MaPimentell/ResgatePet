@@ -44,7 +44,7 @@
                                         </div>
                                     </div>
                                     <div class="md:w-1/3  w-full">
-                                        <img id="foto" src="{{ asset('storage/animal_photo_01_03.jpg') }}" alt="Foto do animal"
+                                        <img id="foto" src="{{ asset('storage/' . $animal->foto) }}" alt="Foto do animal"
                                          class=" md:rounded-r-lg md:rounded-tl-none rounded-t-lg object-cover w-full h-full ">
                                     </div>
                                 </div>

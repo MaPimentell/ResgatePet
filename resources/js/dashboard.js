@@ -109,7 +109,6 @@ import Swal from 'sweetalert2';
             url: '/mapa',
             method: 'GET',
             success: function(response) {
-                console.log(response);
                 // Adicionar um marcador no mapa para cada alerta
                 response.forEach(function(alerta) {
                     var marker = L.marker([alerta.latitude, alerta.longitude],{ icon: customMarkerAlert }).addTo(map);
@@ -119,7 +118,7 @@ import Swal from 'sweetalert2';
                                 <h3 class="font-semibold text-center text-lg">${alerta.nome}</h3>
                             </div>
                             <div class="flex justify-center mb-2">
-                                <img src="storage/animal_photo_01_03.jpg" alt="Foto do animal"
+                                <img src="/storage/${alerta.foto}" alt="Foto do animal"
                                     class="object-cover w-24 h-24 rounded-full border-4 border-white drop-shadow-md ">
                             </div>
                             <div class="">

@@ -71,7 +71,7 @@
                 <x-input-label for="sexo" :value="__('Sexo')" />
                 <label><input type="radio" name="sexo" value="M" {{ old('sexo', $sexo ?? '') == 'M' ? 'checked' : '' }} required> Macho</label>
                 <label class="mx-5"><input type="radio" name="sexo" value="F" {{ old('sexo', $sexo ?? '') == 'F' ? 'checked' : '' }} required> Fêmea</label>
-                <label><input type="radio" name="sexo" value="N" {{ old('sexo', $sexo ?? '') == 'N' ? 'checked' : '' }} required> Não sei</label>
+                <label><input type="radio" name="sexo" value="N" {{ old('sexo', $sexo ?? '') == 'N' ? 'checked' : '' }} required> Outros</label>
                 <x-input-error :messages="$errors->get('sexo')" class="mt-2" />
             </div>
 

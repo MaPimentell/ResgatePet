@@ -57,7 +57,7 @@
                             </div>
                             <div class=" hidden md:flex md:w-1/3 justify-center mb-2">
                                 <div class="relative group w-48 h-56 rounded overflow-hidden">
-                                    <img id="foto" src="{{ asset('storage/animal_photo_01_03.jpg') }}" alt="Foto do animal"
+                                    <img id="foto" src="{{ asset('storage/' . $infoContato->foto) }}" alt="Foto do animal"
                                          class="object-cover w-full h-full transition-opacity duration-300 ease-in-out">
 
                                     <div id="imagemAnimal" class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex justify-center items-center transition-opacity duration-300 ease-in-out">

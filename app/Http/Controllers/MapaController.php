@@ -6,6 +6,7 @@ use App\Models\Localizacao;
 use App\Models\Alerta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class MapaController extends Controller
 {
@@ -29,6 +30,8 @@ class MapaController extends Controller
                         'animais.raca',
                         'animais.foto')
             ->where('exibir', 1)->get();
+
+        Log::debug(json_encode($alertas_usuarios));
 
         return response()->json($alertas_usuarios);
     }
