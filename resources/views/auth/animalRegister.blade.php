@@ -1,4 +1,5 @@
-<x-guest-layout>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<x-app-layout>
     <div class="">
         <div class="mt-4">
             <h2 class="font-semibold text-center text-lg"> Cadastro de Animal </h2>
@@ -83,8 +84,9 @@
             </div>
         </form>
     </div>
-{{-- @push('scripts')
-    @vite('resources/js/cadastro.js')
-@endpush --}}
-</x-guest-layout>
+@push('scripts')
+    @vite('resources/js/animalRegister.js')
+@endpush
+</x-app-layout>
+
 

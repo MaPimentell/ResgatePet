@@ -12,6 +12,7 @@ export default defineConfig({
                 'resources/js/alertas.js',
                 'resources/js/cadastro.js',
                 'resources/js/perfilAnimais.js',
+                'resources/js/animalRegister.js',
             ],
             refresh: true,
         }),
