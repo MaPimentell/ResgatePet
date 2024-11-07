@@ -10,9 +10,8 @@ $(document).on('change', '#fotoAnimal', function(){
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            $('#image').attr('src', e.target.result);  // Setting the image source
+            $('#image').attr('src', e.target.result).addClass('rounded-full');  // Setting the image source
             $("#svgPlus").addClass("hidden");  // Hiding the placeholder
-            console.log('Image loaded');
         }
         reader.readAsDataURL(input.files[0]);  // Reading the file as a Data URL
     }
