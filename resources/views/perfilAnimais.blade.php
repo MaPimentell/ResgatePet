@@ -33,7 +33,7 @@
                                         <div class="">
                                             <h2 class="font-medium md:mb-2 text-xl mb-3">{{ $animal->nome }}</h2>
                                         </div>
-                                        <div class="md:text-gray-500 font-medium md:mb-0 mb-1">{{ $animal->tipo }}  {{ $animal->sexo === 'F' ? 'Fêmea' : ($animal->sexo === 'M' ? 'Macho' : 'Desconhecido') }} | {{ $animal->idade }} ano(s) </div>
+                                        <div class="md:text-gray-500 font-medium md:mb-0 mb-1">{{ $animal->tipo }}  {{ $animal->sexo === 'F' ? 'Fêmea' : ($animal->sexo === 'M' ? 'Macho' : '') }} | {{ $animal->idade }} ano(s) </div>
                                         <div class="text-gray-500 md:mb-0 mb-5">Raça:&nbsp;{{ $animal->raca }}</div>
                                         <div class="text-gray-500 md:mb-0 mb-6"></div>
                                         <div class="flex md:justify-normal justify-between space-x-4 mt-5">

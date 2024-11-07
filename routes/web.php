@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
@@ -18,6 +18,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
     Route::get('/cadastroAnimal', [AnimaisController::class, 'viewCadastro'])->name('animais.cadastro');
     Route::put('/cadastroAnimal/store', [AnimaisController::class, 'store'])->name('animais.store');
 

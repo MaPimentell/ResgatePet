@@ -123,8 +123,8 @@ import Swal from 'sweetalert2';
                             </div>
                             <div class="">
                                 <dl class="grid grid-cols-2 my-3 pl-2 space-y-1 justify-between items-center">
-                                    <dt class="font-bold">Animal:</dt>
-                                    <dd>${alerta.tipo}</dd>
+                                    <dt class="font-bold self-start pt-1">Animal:</dt>
+                                    <dd class="self-start">${alerta.tipo}</dd>
 
                                     <dt class="font-bold">Sexo:</dt>
                                     <dd>${alerta.sexo === 'M' ? 'Macho' : alerta.sexo === 'F' ? 'Fêmea' : 'Outro'}</dd>

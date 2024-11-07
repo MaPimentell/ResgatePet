@@ -1,4 +1,5 @@
 <x-guest-layout>
+    
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -25,12 +26,12 @@
         </div>
 
         <!-- Remember Me -->
-        <div class="block mt-4">
+        {{-- <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
                 <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
             </label>
-        </div>
+        </div> --}}
 
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
@@ -44,4 +45,10 @@
             </x-primary-button>
         </div>
     </form>
+    
+    <a href="{{ route('register')}}" class="ms-3 align-center ">
+        <button class="flex w-full justify-center  px-4 py-2 border-2 border-blue-600  bg-transparent text-blue-600  hover:bg-blue-600 hover:text-white rounded-md font-semibold text-xs  uppercase tracking-widest   transition ease-in-out duration-150">
+            Cadastre-se
+        </button>
+    </a>
 </x-guest-layout>
