@@ -36,11 +36,7 @@
 
             <!-- Page Content -->
             <main>
-                <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">        
-                    <div class="sm:max-w-md sm:rounded-lg md:w-full md:mt-6 md:px-6 md:py-4 md:mb-20 mb-12 w-11/12 px-5 py-4 rounded-lg border-t-4 border-blue-600 bg-white shadow-md overflow-hidden ">
-                        {{ $slot }}
-                    </div>
-                </div>
+                {{ $slot }}
             </main>
         </div>
         @stack('scripts')
