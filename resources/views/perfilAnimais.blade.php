@@ -43,7 +43,7 @@
                                                 </button>
                                             </div>
                                             <div class="">
-                                                <a href="" class="flex justify-center   px-6 py-2 border-2 md:text-sm text-xs font-semibold border-blue-600 hover:bg-blue-600 hover:text-white text-blue-600 bg-transparent rounded-md ">
+                                                <a href="{{ route('animais.cadastro', ['animal_id' => 28]) }}" class="flex justify-center   px-6 py-2 border-2 md:text-sm text-xs font-semibold border-blue-600 hover:bg-blue-600 hover:text-white text-blue-600 bg-transparent rounded-md ">
                                                     Editar
                                                 </a>
                                             </div>

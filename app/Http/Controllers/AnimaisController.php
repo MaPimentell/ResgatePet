@@ -17,13 +17,16 @@ class AnimaisController extends Controller
         $user = Auth::id();
         
         $animais = Animais::where('user_id', $user)->get();
-        
+
         return view('perfilAnimais', compact('animais'));
     }
 
-    public function viewCadastro(){
-
-        return view('auth.animalRegister');
+    public function viewCadastro($animal_id){
+        Log::debug('entrou na controller');
+        Log::debug($animal_id);
+        $animal = Animais::find($animal_id);
+        
+        return view('auth.animalRegister', compact('animal'));
     }
 
     public function store(Request $request){
