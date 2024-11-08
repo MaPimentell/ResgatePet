@@ -10,7 +10,7 @@
         <h1 id="titulo-logo" class="titulo-logo md:text-3xl tracking-tight">Resgata </h1> <h1 class="titulo-logo md:text-3xl tracking-tight text-blue-600">Pet</h1>
     </div>
     <div class="flex flex-col justify-start mt-7">
-        <h2 class="md:text-2xl font-black tracking-tight">Entre na sua conta</h2>
+        <h2 class="md:text-2xl font-black tracking-tight">Acesse sua conta</h2>
         <span class="mt-4 text-gray-500 text-sm tracking-tight">Perdeu seu pet ou quer ajudar animais que estão perdidos? Entre ou cadastre-se em nossa plataforma e contribua para a busca!</span>
     </div>
     <div class="mt-5 mx-2">
