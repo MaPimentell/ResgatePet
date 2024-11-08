@@ -25,14 +25,14 @@
         <!-- Email Address -->
         <div class="mt-6">
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input placeholder="Digite seu email" id="email" class="block mt-1 w-full placeholder-gray-400" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-text-input placeholder="Digite seu email" id="email" class="block mt-1 w-full placeholder-slate-400 bg-slate-50" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-6">
             <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full placeholder-gray-400" placeholder="Digite sua senha"
+            <x-text-input id="password" class="block mt-1 w-full placeholder-slate-400 bg-slate-50" placeholder="Digite sua senha"
                             type="password"
                             name="password"
                             required autocomplete="current-password" />
