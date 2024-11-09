@@ -93,7 +93,7 @@ import Swal from 'sweetalert2';
    obterLocalizacao();
 
    var customMarkerAlert = L.icon({
-        iconUrl: 'pinPata.png',
+        iconUrl: 'pinPata_2.png',
         iconSize: [52, 52],
         iconAnchor: [22, 38],
         popupAnchor: [-3, -38]
