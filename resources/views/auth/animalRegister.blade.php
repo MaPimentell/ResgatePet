@@ -27,7 +27,7 @@
                     <x-input-label for="animal" :value="__('Animal')" />
                     <select class="mt-1 w-full rounded border-slate-300 p-2 disabled:bg-gray-300"
                             name="animal" required>
-                            <option selected disabled>Selecione um animal </option>
+                            <option selected disabled value="">Selecione um animal </option>
                             <option {{ old('modalidade', $animal->tipo ?? '') == 'Cabra' ? 'selected' : '' }} value="Cabra">Cabra</option>
                             <option {{ old('modalidade', $animal->tipo ?? '') == 'Cachorro' ? 'selected' : '' }} value="Cachorro">Cachorro</option>
                             <option {{ old('modalidade', $animal->tipo ?? '') == 'Cavalo' ? 'selected' : '' }} value="Cavalo">Cavalo</option>
@@ -48,38 +48,42 @@
                 
 
 
-
-
                 <!-- Name -->
                 <div class="mt-4">
                     <x-input-label for="nome" :value="__('Nome')" />
-                    <x-text-input id="nome" class="block mt-1 w-full" type="text" name="nome" :value="{{ old('nome', $nome ?? '') }}" required autofocus autocomplete="nome" />
+                    <x-text-input id="nome" class="block mt-1 w-full" type="text" name="nome" value="{{ old('nome', $animal->nome ?? '') }}" required autofocus autocomplete="nome" />
                     <x-input-error :messages="$errors->get('nome')" class="mt-2" />
                 </div>
 
                 <!-- Raça -->
                 <div class="mt-4">
                     <x-input-label for="raca" :value="__('Raça')" />
-                    <x-text-input id="raca" class="block mt-1 w-full" type="text" name="raca" :value="{{ old('raca', $raca ?? '') }}" required autofocus autocomplete="raca" />
+                    <x-text-input id="raca" class="block mt-1 w-full" type="text" name="raca" value="{{ old('raca', $animal->raca ?? '') }}" required autofocus autocomplete="raca" />
                     <x-input-error :messages="$errors->get('raca')" class="mt-2" />
                 </div>
 
                 <!-- Idade -->
                 <div class="mt-4">
                     <x-input-label for="idade" :value="__('Idade')" />
-                    <x-text-input id="idade" class="block mt-1 w-full" type="number" name="idade" :value="{{ old('idade', $idade ?? '') }}" required autocomplete="idade" max="999" min="0" />
+                    <x-text-input id="idade" class="block mt-1 w-full" type="number" name="idade" value="{{ old('idade', $animal->idade ?? '') }}" required autocomplete="idade" max="999" min="0" />
                     <x-input-error :messages="$errors->get('idade')" class="mt-2" />
                 </div>
 
                 <!-- Sexo -->
                 <div class="mt-4">
                     <x-input-label for="sexo" :value="__('Sexo')" />
-                    <label><input type="radio" name="sexo" value="M" {{ old('sexo', $sexo ?? '') == 'M' ? 'checked' : '' }} required> Macho</label>
-                    <label class="mx-5"><input type="radio" name="sexo" value="F" {{ old('sexo', $sexo ?? '') == 'F' ? 'checked' : '' }} required> Fêmea</label>
-                    <label><input type="radio" name="sexo" value="N" {{ old('sexo', $sexo ?? '') == 'N' ? 'checked' : '' }} required> Outros</label>
+                    <label><input type="radio" name="sexo" value="M" {{ old('sexo', $animal->sexo ?? '') == 'M' ? 'checked' : '' }} required> Macho</label>
+                    <label class="mx-5"><input type="radio" name="sexo" value="F" {{ old('sexo', $animal->sexo ?? '') == 'F' ? 'checked' : '' }} required> Fêmea</label>
+                    <label><input type="radio" name="sexo" value="N" {{ old('sexo', $animal->sexo ?? '') == 'N' ? 'checked' : '' }} required> Outros</label>
                     <x-input-error :messages="$errors->get('sexo')" class="mt-2" />
                 </div>
 
+                @if ($animal != null && $animal->id != null)
+                    <input id="animal_id" name="animal_id" class="hidden" type="text" value="{{ $animal->id }}"
+                required />
+                @else
+                    <input id="animal_id" name="animal_id" class="hidden" type="text" value="0" required />
+                @endif
 
                 <div class="flex items-center justify-end mt-4">
                     <x-primary-button class="mt-6">

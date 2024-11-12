@@ -11,69 +11,101 @@ use Carbon\Carbon;
 
 class AnimaisController extends Controller
 {
-
+    // Exibe os animais cadastrados do usuário logado
     public function view(){
         
-        $user = Auth::id();
+        $user = Auth::id();  // Obtém o ID do usuário logado
         
-        $animais = Animais::where('user_id', $user)->get();
+        $animais = Animais::where('user_id', $user)->get();  // Busca os animais do usuário
 
-        return view('perfilAnimais', compact('animais'));
+        return view('perfilAnimais', compact('animais'));  // Retorna a view com os animais
     }
 
+    // Exibe a página de cadastro de um animal específico
     public function viewCadastro($animal_id){
-        Log::debug('entrou na controller');
+
         Log::debug($animal_id);
-        $animal = Animais::find($animal_id);
         
-        return view('auth.animalRegister', compact('animal'));
+        $animal = Animais::find($animal_id);  // Busca o animal pelo ID
+        Log::debug(json_encode($animal));
+        
+        return view('auth.animalRegister', compact('animal'));  // Retorna a view de cadastro com os dados do animal
     }
 
+    // Cadastra um novo animal no sistema
     public function store(Request $request){
-        $user = Auth::id();
+        $user = Auth::id();  // Obtém o ID do usuário logado
+        $animal = Animais::find($request->animal_id);
 
+        if($request->animal_id == 0){
+            $findAnimal = Animais::select('id')->last();
+            $animalId = ($animal->id + 1);
+        }
+
+        // Verifica se o usuário enviou uma foto e se é válida
+        if ($request->hasFile('fotoAnimal') && $request->file('fotoAnimal')->isValid()) {
+            
+            if(isset($animal)){
+                $animalId = $animal->id;
+            }
+            // Gera o nome do arquivo da foto
+            $filename = "animal_foto_{$user}_{$animalId}." . $request->file('fotoAnimal')->getClientOriginalExtension();
+    
+            // Salva a foto no diretório correto
+            $path = $request->file('fotoAnimal')->storeAs("images/animais", $filename, 'public');
+        } else {
+            // Caso não tenha foto, define uma foto padrão
+            $path = 'images/animais/default_pet.jpg';
+        }
+
+        // Formata o nome e a raça do animal
         $nomeFormatado = ucwords(strtolower(trim($request->nome)));
         $racaFormatado = ucwords(strtolower(trim($request->raca)));
 
-        $animal = Animais::create([
-            'user_id' => $user,
-            'nome' => $nomeFormatado,
-            'sexo' => $request->sexo,
-            'idade' => $request->idade,
-            'tipo' => $request->animal,
-            'raca' => $racaFormatado,
-            'foto' => '', 
-        ]);
+        // Cria o animal no banco de dados
+        if($animal){
 
+            $animal->update([
+                'user_id' => $user,
+                'nome' => $nomeFormatado,
+                'sexo' => $request->sexo,
+                'idade' => $request->idade,
+                'tipo' => $request->animal,
+                'raca' => $racaFormatado,
+                'foto' => $path, 
+            ]);
 
-        if ($request->hasFile('fotoAnimal') && $request->file('fotoAnimal')->isValid()) {
-            
-            $animalId = $animal->id;
-            $filename = "animal_foto_{$user}_{$animalId}." . $request->file('fotoAnimal')->getClientOriginalExtension();
-    
-            
-            $path = $request->file('fotoAnimal')->storeAs("images/animais", $filename, 'public');
-    
-            
-            $animal->update(['foto' => $path]);
+            return redirect('perfilAnimal')->with('animalEditado', 'Animal Editado com sucesso!');
+
         } else {
-            
-            $animal->update(['foto' => 'images/animais/default_pet.jpg']);
+
+            $animal = Animais::create([
+                'user_id' => $user,
+                'nome' => $nomeFormatado,
+                'sexo' => $request->sexo,
+                'idade' => $request->idade,
+                'tipo' => $request->animal,
+                'raca' => $racaFormatado,
+                'foto' => $path, 
+            ]);
+
+            return redirect('perfilAnimal')->with('animalCadastrado', 'Animal cadastrado com sucesso!');  // Redireciona com mensagem de sucesso
         }
-        return redirect('perfilAnimal')->with('animalCadastrado', 'Animal cadastrado com sucesso!');
-    
     }
 
+    // Exclui um animal do sistema
     public function delete($animal_id){
-        $animal = Animais::find($animal_id)->delete();
+        $animal = Animais::find($animal_id)->delete();  // Busca e deleta o animal pelo ID
 
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true]);  // Retorna uma resposta JSON de sucesso
     }       
 
+    // Obtém os animais do usuário que não possuem alerta ativo
     public function getAnimais()
     {
-        $user_id = Auth::id();
+        $user_id = Auth::id();  // Obtém o ID do usuário logado
 
+        // Busca os animais que não possuem alerta ativo
         $animais_usuario = Animais::leftJoin('alertas', 'alertas.animal_id', '=', 'animais.id')
             ->join('users', 'animais.user_id', '=', 'users.id')
             ->select('users.id as user_id', 'animais.nome', 'animais.id')
@@ -81,31 +113,34 @@ class AnimaisController extends Controller
             ->whereNotIn('animais.id', function($query) {
                 $query->select('alertas.animal_id')
                     ->from('alertas')
-                    ->where('alertas.exibir', 1);
+                    ->where('alertas.exibir', 1);  // Verifica se o alerta está ativo
             })
             ->distinct()
             ->get();
 
-        return response()->json($animais_usuario);
+        return response()->json($animais_usuario);  // Retorna os animais como resposta JSON
     }
 
-   public function storeAlerta(Request $request){
+    // Cria um alerta para um animal específico
+    public function storeAlerta(Request $request){
 
+        // Busca os dados do animal e sua localização
         $dados = Animais::join('localizacao', 'animais.user_id', 'localizacao.user_id')
         ->select('animais.user_id', 'animais.id as animal_id', 'localizacao.id as localizacao_id')
         ->where('animais.id', $request->input('animal_id'))
         ->first();
 
+        // Cria um novo alerta para o animal
         Alerta::create([
             'user_id' => $dados->user_id,
             'animal_id' => $dados->animal_id,
             'localizacao_id' => $dados->localizacao_id,
             'latitude' => $request->input('latitude'),
             'longitude' => $request->input('longitude'),
-            'exibir' => 1
+            'exibir' => 1  // Define o alerta como ativo
         ]);
 
-        return redirect()->back();
+        return redirect()->back();  // Redireciona de volta para a página anterior
     }
 
 }

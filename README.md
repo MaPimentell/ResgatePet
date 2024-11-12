@@ -2,7 +2,7 @@ Processos para executar o projeto
 
     composer install
     npm install,
-    Configurar .env
+    Configurar .env com nome do banco e senha(caso exista)
 
     php artisan key:generate
     php artisan storage:link

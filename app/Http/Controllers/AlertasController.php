@@ -9,9 +9,10 @@ use App\Models\Alerta;
 
 class AlertasController extends Controller
 {
+    // Exibe os alertas do usuário logado, incluindo alertas ativos e desativados
     public function view(){
 
-        $user_id = Auth::id();
+        $user_id = Auth::id();  // Obtém o ID do usuário logado
 
         $alertas = Alerta::join('animais', 'animais.id', 'alertas.animal_id')
         ->join('users', 'users.id', 'alertas.user_id')
@@ -42,6 +43,7 @@ class AlertasController extends Controller
         return view('alertas', compact('alertas', 'alertas_ativos', 'alertas_desativados'));
     }
 
+    // Atualiza o alerta para "resgatado" e o desativa
     public function updateResgatado($alerta_id){
 
         $alerta = Alerta::find($alerta_id);
@@ -50,8 +52,9 @@ class AlertasController extends Controller
         $alerta->save();
 
         return redirect()->back()->with('resgatado', 'Ficamos felizes por ter dado tudo certo! ');
-
     }
+
+    // Desativa o alerta (oculta-o)
     public function desativaAlerta($alerta_id){
 
         $alerta = Alerta::find($alerta_id);

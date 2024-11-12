@@ -11,17 +11,16 @@ use Illuminate\Support\Facades\Log;
 class MapaController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Exibe uma lista de alertas de todos os usuários.
      */
     public function index()
     {
-        //Exibir alertas de todos os usuários
+        // Exibe todos os alertas com informações sobre os animais e suas localizações
         $alertas_usuarios = Alerta::join('animais', 'animais.id', 'alertas.animal_id')
             ->select(   'alertas.id',
                         'alertas.latitude',
                         'alertas.longitude',
                         'alertas.created_at',
-
                         'animais.id as animal_id',
                         'animais.nome',
                         'animais.idade',
@@ -29,75 +28,66 @@ class MapaController extends Controller
                         'animais.tipo',
                         'animais.raca',
                         'animais.foto')
-            ->where('exibir', 1)->get();
+            ->where('exibir', 1)  // Filtra alertas que devem ser exibidos
+            ->get();
 
+        // Retorna os alertas de usuários em formato JSON
         return response()->json($alertas_usuarios);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Armazena um novo recurso no banco de dados.
      */
     public function store(Request $request)
     {
+        // Obtém o usuário autenticado
         $user = Auth::user();
 
+        // Verifica se o usuário já tem uma localização cadastrada
         $localizacao = Localizacao::where('user_id', $user->id)->get();
 
-       if($localizacao->isEmpty()){
+        // Se não houver localização, cria uma nova
+        if ($localizacao->isEmpty()) {
             $localizacao = Localizacao::create([
                 'user_id' => $user->id,
                 'latitude' => $request->input('latitude'),
                 'longitude' => $request->input('longitude'),
             ]);
-       }else{
+        } else {
+            // Se houver, apenas atualiza a latitude e longitude
             $localizacao->latitude = $request->input('latitude');
-            $localizacao->latitude = $request->input('longitude');
-       }
+            $localizacao->longitude = $request->input('longitude');
+        }
 
+        // Retorna a localização atualizada ou criada em formato JSON
         return response()->json($localizacao);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-
+       
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+   
     public function edit(string $id)
     {
-        //
+       
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+       
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+   
     public function destroy(string $id)
     {
-        //
+        
     }
-
-
-
-
 }

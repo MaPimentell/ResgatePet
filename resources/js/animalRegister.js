@@ -3,16 +3,17 @@ import $ from 'jquery';
 // import 'select2';
 // import 'leaflet';
 
+// Escuta a mudança no campo de input com o id #fotoAnimal (quando um novo arquivo é selecionado)
 $(document).on('change', '#fotoAnimal', function(){
     var input = $(this)[0];
-    console.log(input);  // For debugging purposes, you can see the input element.
+    console.log(input);  
 
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-            $('#image').attr('src', e.target.result).addClass('rounded-full');  // Setting the image source
-            $("#svgPlus").addClass("hidden");  // Hiding the placeholder
+            $('#image').attr('src', e.target.result).addClass('rounded-full');  
+            $("#svgPlus").addClass("hidden");  
         }
-        reader.readAsDataURL(input.files[0]);  // Reading the file as a Data URL
+        reader.readAsDataURL(input.files[0]);  
     }
 });

@@ -104,6 +104,7 @@ import Swal from 'sweetalert2';
         var marker = e.target;
     }
 
+    // Exibe os alertas no mapa com base nos dados recebidos via AJAX
    function exibirAlertas(){
         $.ajax({
             url: '/mapa',
@@ -157,7 +158,7 @@ import Swal from 'sweetalert2';
    }
 
 
-
+    // Função para adicionar um alerta através de um modal
     $('#btnAdicionarAlerta').on('click', function(){
 
          // Fazer uma requisição AJAX para obter os dados dos animais
