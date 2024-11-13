@@ -144,9 +144,9 @@
             </div>
         </div>
     </div>
-
+</x-app-layout>
 <!-- Script para exibir notificação de sucesso após o resgate do animal -->
-@if(session('resgatado'))
+@if(session("resgatado"))
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         Swal.fire({
@@ -163,7 +163,7 @@
 @endif
 
 <!-- Script para exibir notificação de sucesso após a desativação do alerta -->
-@if(session('desativado'))
+@if(session("desativado"))
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         Swal.fire({
