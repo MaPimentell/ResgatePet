@@ -7,10 +7,16 @@ use App\Http\Controllers\AnimaisController;
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\AlertasController;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 
-Route::get('/', function () {
-    return view('auth.login');
+
+
+
+Route::middleware('guest')->group(function () {
+    Route::get('/', function () {
+        return view('auth.login');
+    });
 });
 
 Route::get('/dashboard', function () {
@@ -18,7 +24,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-
+  
     Route::get('/cadastroAnimals/{animal_id}', [AnimaisController::class, 'viewCadastro'])->name('animais.cadastro');
     Route::put('/cadastroAnimal/store/', [AnimaisController::class, 'store'])->name('animais.store');
 

@@ -3,7 +3,11 @@
     <div class="sm:max-w-md sm:rounded-lg md:w-full md:mt-6 md:px-6 md:py-4 md:mb-20 mb-12 w-11/12 px-5 py-4 rounded-lg border-t-4 border-blue-600 bg-white shadow-md overflow-hidden ">
         <div class="">
             <div class="mt-4">
+                @if($animal->id != 0)
+                <h2 class="font-semibold text-center text-lg"> Editar perfil </h2>    
+                @else
                 <h2 class="font-semibold text-center text-lg"> Cadastro de Animal </h2>
+                @endif
             </div>
             <form method="POST" action="{{ route('animais.store') }}" enctype="multipart/form-data">
                 @csrf
