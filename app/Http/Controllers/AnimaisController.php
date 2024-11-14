@@ -9,6 +9,8 @@ use App\Models\Animais;
 use App\Models\Alerta;
 use Carbon\Carbon;
 use App\Models\Post;
+use Illuminate\Support\Facades\Storage;
+
 
 class AnimaisController extends Controller
 {
@@ -38,6 +40,12 @@ class AnimaisController extends Controller
         $user = Auth::id();  // Obtém o ID do usuário logado
         $animal = Animais::find($request->animal_id);
 
+        Log::debug($request->all());
+
+        $request->validate([
+            'fotoAnimal' => 'nullable|image|mimes:jpg,jpeg,png|max:4096',  
+        ]);
+        
         if($request->animal_id == 0){
             $findAnimal = Animais::select('id')->last();
             $animalId = ($animal->id + 1);
@@ -51,7 +59,13 @@ class AnimaisController extends Controller
             }
             // Gera o nome do arquivo da foto
             $filename = "animal_foto_{$user}_{$animalId}." . $request->file('fotoAnimal')->getClientOriginalExtension();
-    
+            
+            $verifica_foto = "images/animais" . $filename;
+            // Verifica se o animal já tem uma foto e se é diferente da nova
+            if (isset($animal) && $animal->foto && $animal->foto != $verifica_foto) {
+                Storage::disk('public')->delete($animal->foto);
+            }
+            
             // Salva a foto no diretório correto
             $path = $request->file('fotoAnimal')->storeAs("images/animais", $filename, 'public');
         } else {

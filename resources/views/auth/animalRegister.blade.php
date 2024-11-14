@@ -25,6 +25,9 @@
                         </div>
                     </label>
                 </div>
+                <div class="flex justify-center text-center">
+                    <x-input-error :messages="$errors->get('fotoAnimal')" class="mt-2" />
+                </div>
 
                 <!-- Animal -->
                 <div class="mt-4">
