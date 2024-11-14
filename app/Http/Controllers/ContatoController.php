@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Animais;
 use Illuminate\Support\Facades\Log;
+use App\Models\Post;
 
 class ContatoController extends Controller
 {

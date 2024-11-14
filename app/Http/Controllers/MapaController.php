@@ -7,6 +7,7 @@ use App\Models\Alerta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use App\Models\Post;
 
 class MapaController extends Controller
 {

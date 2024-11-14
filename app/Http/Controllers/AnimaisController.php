@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Animais;
 use App\Models\Alerta;
 use Carbon\Carbon;
+use App\Models\Post;
 
 class AnimaisController extends Controller
 {
