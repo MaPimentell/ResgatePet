@@ -12,9 +12,9 @@
                 <div class="mt-4 flex justify-center">
                     <input id="fotoAnimal" name="fotoAnimal" type="file" class="hidden">
                     <label for="fotoAnimal" class="relative inline-block cursor-pointer">
-                        <img id="image"  src="{{ asset('images/default_pet.jpg') }}" alt="Foto do animal"
-                            class=" mt-2 ml-4 w-20 rounded-full border-2 opacity-70 hover:opacity-100 transition duration-200">
-                        <div id="svgPlus" class="absolute top-5  right-0 -mt-1 mr-1 text-blue-600 hover:text-gray-400">
+                        <img id="image" src="{{ asset('storage/' . $animal->foto) }}" alt="Foto do animal" 
+                        class=" mt-2 ml-4 w-20 h-20 object-cover rounded-full border-2 opacity-70 hover:opacity-100 transition duration-200">
+                        <div id="svgPlus" class="absolute top-5  right-0 -mt-1 mr-1 text-blue-600">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                             </svg>
