@@ -34,11 +34,11 @@
                     id="password"
                     name="password"
                     type="password"
-                    class="mt-1 block w-3/4"
+                    class="mt-1 block w-3/4 placeholder-slate-400 bg-slate-50"
                     placeholder="{{ __('Senha') }}"
                 />
 
-                <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
+                <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2 " />
             </div>
 
             <div class="mt-6 flex justify-end">

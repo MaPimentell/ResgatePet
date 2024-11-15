@@ -15,19 +15,19 @@
 
         <div>
             <x-input-label for="update_password_current_password" :value="__('Senha atual')" />
-            <x-text-input id="update_password_current_password" name="current_password" type="password" class="mt-1 block w-full" autocomplete="current-password" />
+            <x-text-input placeholder="Digite sua senha atual" id="update_password_current_password" name="current_password" type="password" class="mt-1 block w-full placeholder-slate-400 bg-slate-50" autocomplete="current-password" />
             <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
         </div>
 
         <div>
             <x-input-label for="update_password_password" :value="__('Nova senha')" />
-            <x-text-input id="update_password_password" name="password" type="password" class="mt-1 block w-full" autocomplete="new-password" />
+            <x-text-input placeholder="Digite sua senha nova" id="update_password_password" name="password" type="password" class="mt-1 block w-full placeholder-slate-400 bg-slate-50" autocomplete="new-password" />
             <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
         </div>
 
         <div>
             <x-input-label for="update_password_password_confirmation" :value="__('confirmar senha')" />
-            <x-text-input id="update_password_password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full" autocomplete="new-password" />
+            <x-text-input placeholder="Confirme sua nova senha" id="update_password_password_confirmation" name="password_confirmation" type="password" class="mt-1 block w-full placeholder-slate-400 bg-slate-50" autocomplete="new-password" />
             <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
         </div>
 

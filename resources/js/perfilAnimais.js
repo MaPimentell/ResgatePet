@@ -16,7 +16,13 @@ $('.btn-deletaAnimal').on('click', function() {
         text: "Você realmente deseja deletar este animal?",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Sim, deletar!'
+        reverseButtons: true,
+        confirmButtonText: 'Deletar',
+        customClass:{
+            confirmButton: 'swal-btn-confirmar-warning',
+            cancelButton: 'swal-btn-cancelar-warning',
+            popup: 'swal-popup-warning',
+        }
     }).then((result) => { 
         if (result.isConfirmed) {
             // Realiza a requisição AJAX para deletar o animal
@@ -27,8 +33,19 @@ $('.btn-deletaAnimal').on('click', function() {
                     'X-CSRF-TOKEN': $('input[name="_token"]').val(), // CSRF Token para segurança
                 },
                 success: function(response) {
-                    Swal.fire('Deletado!', 'O animal foi deletado com sucesso.', 'success');
-                    location.reload(); // Recarrega a página após deletar
+                    Swal.fire({
+                        title: 'Deletado!',
+                        text: 'O animal foi deletado com sucesso.',
+                        icon: 'success',
+                        customClass:{
+                            confirmButton: 'swal-confirmar',
+                            popup: 'swal-popup',
+                        }
+                    }).then((result) => { 
+                        if (result.isConfirmed) {
+                            window.location.reload(); 
+                        }
+                    });
                 },
                 error: function() {
                     Swal.fire('Erro!', 'Houve um problema ao deletar o animal.', 'error');

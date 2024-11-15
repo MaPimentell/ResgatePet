@@ -59,7 +59,7 @@
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
-            <a href="{{ route('register')}}" class="ms-3 align-center flex  rounded-2xl justify-center px-4 py-2 border-2 border-red-600  bg-transparent text-red-600  hover:bg-red-600 hover:text-white  font-semibold text-xs  uppercase tracking-widest   transition ease-in-out duration-300">
+            <a href="{{ route('register')}}" class="ms-3 align-center flex  rounded-2xl justify-center px-4 py-2 border border-red-600  bg-transparent text-red-600  hover:bg-red-600 hover:text-white  font-semibold text-xs  uppercase tracking-widest   transition ease-in-out duration-300">
                 Cadastre-se
             </a>
         </div>

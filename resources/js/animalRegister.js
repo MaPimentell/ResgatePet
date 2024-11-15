@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import Toastify from 'toastify-js'
 // import Swal from 'sweetalert2';
 // import 'select2';
 // import 'leaflet';

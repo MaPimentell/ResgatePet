@@ -26,9 +26,7 @@ class AnimaisController extends Controller
 
     // Exibe a página de cadastro de um animal específico
     public function viewCadastro($animal_id){
-
-        Log::debug($animal_id);
-        
+       
         $animal = Animais::find($animal_id); // Busca o animal pelo ID
         
         return view('auth.animalRegister', compact('animal'));  // Retorna a view de cadastro com os dados do animal
@@ -39,15 +37,13 @@ class AnimaisController extends Controller
         $user = Auth::id();  // Obtém o ID do usuário logado
         $animal = Animais::find($request->animal_id);
 
-        Log::debug($request->all());
-
         $request->validate([
             'fotoAnimal' => 'nullable|image|mimes:jpg,jpeg,png|max:4096',  
         ]);
         
         if($request->animal_id == 0){
-            $findAnimal = Animais::select('id')->last();
-            $animalId = ($animal->id + 1);
+            $findAnimal = Animais::select('id')->latest()->first();
+            $animalId = $findAnimal ? ($findAnimal->id + 1) : 1;
         }
 
         // Verifica se o usuário enviou uma foto e se é válida
@@ -109,9 +105,9 @@ class AnimaisController extends Controller
 
     // Exclui um animal do sistema
     public function delete($animal_id){
-        $animal = Animais::find($animal_id)->delete();  // Busca e deleta o animal pelo ID
+        $animal = Animais::find($animal_id)->delete();  
 
-        return response()->json(['success' => true]);  // Retorna uma resposta JSON de sucesso
+        return response()->json(['success' => true]); 
     }       
 
     // Obtém os animais do usuário que não possuem alerta ativo

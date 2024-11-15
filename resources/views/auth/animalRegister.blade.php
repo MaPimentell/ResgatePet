@@ -1,6 +1,6 @@
 <x-app-layout>
 <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-    <div class="sm:max-w-md sm:rounded-lg md:w-full md:mt-6 md:px-6 md:py-4 md:mb-20 mb-12 w-11/12 px-5 py-4 rounded-lg border-t-4 border-blue-600 bg-white shadow-md overflow-hidden ">
+    <div class="sm:max-w-md sm:rounded-lg md:w-full md:mt-6 md:px-6 md:py-4 md:mb-20 mb-12 w-11/12 px-5 py-4 rounded-lg border-t-4 border-red-600 bg-white shadow-md overflow-hidden ">
         <div class="">
             <div class="mt-4">
                 @if($animal)
@@ -18,7 +18,7 @@
                     <label for="fotoAnimal" class="relative inline-block cursor-pointer">
                         <img id="image" src="{{ $animal ? asset('storage/' . $animal->foto) : asset('images/default_pet.jpg') }}"  alt="Foto do animal" 
                         class=" mt-2 ml-4 w-20 h-20 object-cover rounded-full border-2 opacity-70 hover:opacity-100 transition duration-200">
-                        <div id="svgPlus" class="absolute top-5  right-0 -mt-1 mr-1 text-blue-600">
+                        <div id="svgPlus" class="absolute top-5  right-0 -mt-1 mr-1 text-red-600">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                             </svg>
@@ -105,3 +105,4 @@
     @vite('resources/js/animalRegister.js')
 @endpush
 </x-app-layout>
+

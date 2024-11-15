@@ -10,18 +10,22 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto px-3 lg:px-8">
             <!-- Caixa de conteúdo com estilo de borda e sombra -->
-            <div class="bg-white overflow-hidden border-t-4 border-blue-600 shadow-sm rounded-lg mb-10">
+            <div class="bg-white overflow-hidden border-t-4 border-red-600 shadow-sm rounded-lg mb-10">
                 <div class="p-6 text-gray-900">
                     <div class="md:flex gap-1 items-center md:justify-between">
                         <!-- Título da seção "Animais cadastrados" -->
-                        <h2 class="md:mb-0 mb-4 font-medium md:font-bold text-xl text-gray-900">
-                            Animais cadastrados
-                        </h2>
+                        <div>
+                            <h2 class="md:mb-0 mb-4 font-medium md:font-bold text-xl text-gray-900">
+                                Animais cadastrados
+                            </h2>
+                            <span class="text-sm text-gray-600">Para adicionar alertas no mapa, primeiro é necessário cadastrar um animal. Clique em <i>Cadastrar Novo Animal</i> caso ainda não tenha feito.</span>
+                        </div>
+                        
                         <div class="md:p-0 md:mt-0 p-3 mt-7">
                             <!-- Link para a rota de cadastro de animais -->
                             <a href="{{ route('animais.cadastro', 0)}}" class="w-full">
                                 <!-- Botão para cadastrar um novo animal -->
-                                <button class="w-full px-3 py-2 rounded-md border-2 border-blue-600 bg-blue-600 hover:bg-transparent hover:text-blue-600 text-white font-medium space-x-1">
+                                <button class="w-full px-3 py-2 rounded-md border border-red-600 bg-red-600 hover:bg-transparent hover:text-red-600 text-white font-medium space-x-1 transition ease-in-out duration-300">
                                     <span>Cadastrar novo animal</span> <span class="font-semibold text-xl">+</span>
                                 </button>
                             </a>
@@ -37,7 +41,7 @@
                          @else
                             <!-- Loop para cada animal cadastrado -->
                             @foreach ($animais as $animal)
-                                <div class="flex md:flex-row md:border-l-4 md:p-0 md:mb-4 mb-6 mt-2 flex-col-reverse rounded-lg border-blue-600" style="box-shadow: 0 5px 17px -5px rgba(0, 0, 0, 0.4);">
+                                <div class="flex md:flex-row md:border-l-4 md:p-0 md:mb-4 mb-6 mt-2 flex-col-reverse rounded-lg border-gray-500" style="box-shadow: 0 5px 17px -5px rgba(0, 0, 0, 0.4);">
                                     <!-- Div com as informações do animal -->
                                     <div class="p-5 md:w-2/3">
                                         <div>
@@ -51,13 +55,13 @@
                                         <div class="flex md:justify-normal justify-between space-x-4 mt-5">
                                             <!-- Botão para excluir o animal -->
                                             <div class="md:flex md:gap-0 mb-2 md:mb-0 md:space-x-4">
-                                                <button data-id="{{ $animal->id }}" class="btn-deletaAnimal md:text-sm text-xs px-6 py-2 border-2 font-semibold border-red-600 hover:bg-red-600 hover:text-white text-red-600 bg-transparent rounded-md">
+                                                <button data-id="{{ $animal->id }}" class="btn-deletaAnimal md:text-sm text-xs px-6 py-2 border font-semibold border-red-500 hover:bg-red-500 hover:text-white text-red-500 bg-transparent rounded-md transition ease-in-out duration-300">
                                                     Excluir
                                                 </button>
                                             </div>
                                             <!-- Link para editar o animal -->
                                             <div>
-                                                <a href="{{ route('animais.cadastro', $animal->id) }}" class="flex justify-center px-6 py-2 border-2 md:text-sm text-xs font-semibold border-blue-600 hover:bg-blue-600 hover:text-white text-blue-600 bg-transparent rounded-md">
+                                                <a href="{{ route('animais.cadastro', $animal->id) }}" class="flex justify-center px-6 py-2 border md:text-sm text-xs font-semibold border-blue-600 hover:bg-blue-600 hover:text-white text-blue-600 bg-transparent rounded-md transition ease-in-out duration-300">
                                                     Editar
                                                 </a>
                                             </div>
@@ -81,22 +85,35 @@
     @push('scripts')
         @vite('resources/js/perfilAnimais.js')
     @endpush
+    @if(session('animalEditado'))
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <script>
+            Toastify({
+                text: "Animal Editado com sucesso!",
+                duration: 3000,
+                newWindow: true,
+                close: true,
+                gravity: "bottom", // `top` or `bottom`
+                positionLeft: false, // `true` or `false`
+                backgroundColor: "#0d4fd4",
+            }).showToast();
+        </script>
+    @endif
+    @if(session('animalCadastrado'))
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <script>
+            Toastify({
+                text: "Animal cadastrado com sucesso!",
+                duration: 3000,
+                newWindow: true,
+                gravity: "bottom", // `top` or `bottom`
+                positionLeft: false, // `true` or `false`
+                backgroundColor: "#0d4fd4",
+            }).showToast();
+        </script>
+    @endif
 </x-app-layout>
 
-<!-- Verifica se há uma sessão indicando que um animal foi cadastrado -->
-@if(session('animalCadastrado'))
-    <!-- Inclui a biblioteca SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        Swal.fire({
-            title: 'Sucesso',
-            text: '{{ session('animalCadastrado') }}',
-            icon: 'success',
-            confirmButtonText: 'Confirmar',
-            customClass: {
-                confirmButton: 'swal-btn-sucesso',
-                popup: 'swal-popup-sucesso'
-            }
-        });
-    </script>
-@endif
+

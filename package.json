@@ -21,6 +21,7 @@
         "jquery-mask-plugin": "^1.14.16",
         "leaflet": "^1.9.4",
         "select2": "^4.1.0-rc.0",
-        "sweetalert2": "^11.14.0"
+        "sweetalert2": "^11.14.0",
+        "toastify-js": "^1.12.0"
     }
 }
