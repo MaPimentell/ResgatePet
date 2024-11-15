@@ -3,7 +3,7 @@
     <div class="sm:max-w-md sm:rounded-lg md:w-full md:mt-6 md:px-6 md:py-4 md:mb-20 mb-12 w-11/12 px-5 py-4 rounded-lg border-t-4 border-blue-600 bg-white shadow-md overflow-hidden ">
         <div class="">
             <div class="mt-4">
-                @if($animal->id != 0)
+                @if($animal)
                 <h2 class="font-semibold text-center text-lg"> Editar perfil </h2>    
                 @else
                 <h2 class="font-semibold text-center text-lg"> Cadastro de Animal </h2>
@@ -16,7 +16,7 @@
                 <div class="mt-4 flex justify-center">
                     <input id="fotoAnimal" name="fotoAnimal" type="file" class="hidden">
                     <label for="fotoAnimal" class="relative inline-block cursor-pointer">
-                        <img id="image" src="{{ asset('storage/' . $animal->foto) }}" alt="Foto do animal" 
+                        <img id="image" src="{{ $animal ? asset('storage/' . $animal->foto) : asset('images/default_pet.jpg') }}"  alt="Foto do animal" 
                         class=" mt-2 ml-4 w-20 h-20 object-cover rounded-full border-2 opacity-70 hover:opacity-100 transition duration-200">
                         <div id="svgPlus" class="absolute top-5  right-0 -mt-1 mr-1 text-blue-600">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

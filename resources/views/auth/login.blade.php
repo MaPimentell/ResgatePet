@@ -7,7 +7,7 @@
 </style>
 <x-guest-layout>
     <div class="flex justify-center mt-4">
-        <h1 id="titulo-logo" class="titulo-logo md:text-3xl tracking-tight">Resgata </h1> <h1 class="titulo-logo md:text-3xl tracking-tight text-blue-600">Pet</h1>
+        <h1 id="titulo-logo" class="titulo-logo md:text-3xl tracking-tight">Resgata </h1> <h1 class="titulo-logo md:text-3xl tracking-tight text-red-600">Pet</h1>
     </div>
     <div class="flex flex-col justify-start mt-7">
         <h2 class="md:text-2xl font-black tracking-tight">Acesse sua conta</h2>
@@ -48,19 +48,21 @@
             </label>
         </div> --}}
 
-        <div class="flex items-center justify-between mt-9">
+        
+        <x-primary-button class="w-full justify-center mt-9 ">
+            {{ __('Log in') }}
+        </x-primary-button>
+
+        <div class="flex items-center justify-between mt-6">
             @if (Route::has('password.request'))
                 <a class=" text-sm text-gray-600 hover:text-gray-900  hover:underline rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
-            <a href="{{ route('register')}}" class="ms-3 align-center flex  rounded-2xl justify-center px-4 py-2 border-2 border-blue-600  bg-transparent text-blue-600  hover:bg-blue-600 hover:text-white  font-semibold text-xs  uppercase tracking-widest   transition ease-in-out duration-300">
+            <a href="{{ route('register')}}" class="ms-3 align-center flex  rounded-2xl justify-center px-4 py-2 border-2 border-red-600  bg-transparent text-red-600  hover:bg-red-600 hover:text-white  font-semibold text-xs  uppercase tracking-widest   transition ease-in-out duration-300">
                 Cadastre-se
             </a>
         </div>
-        <x-primary-button class="w-full justify-center mt-6 ">
-            {{ __('Log in') }}
-        </x-primary-button>
     </form>
     
     

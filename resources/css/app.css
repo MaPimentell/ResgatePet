@@ -5,33 +5,33 @@
 
 
 .swal-confirmar {
-    background-color: #2430dd;
+    background-color: green;
     font-weight: 700;
     color: white;
     border-style: solid;
     border-width: 2px;
     border-radius: 5px;
-    border-color: #2430dd;
+    border-color: green;
     margin-left:15px;
 }
 .swal-confirmar:hover {
     color: white;
-    background-color: #1924bd;
-    border-color: #1924bd;
+    background-color: green;
+    border-color: green;
 }
 .swal-cancelar {
-    color: #2430dd;
+    color: green;
     font-weight: 700;
     border-style: solid;
     border-width: 1px;
     border-radius: 5px;
-    border-color: #2430dd;
+    border-color: green;
     background-color: transparent;
     margin-right:15px;
 }
 .swal-cancelar:hover {
-    background-color: #2430dd;
-    border-color: #2430dd;
+    background-color: green;
+    border-color: green;
     color: white;
 }
 .swal-popup {
@@ -41,7 +41,7 @@
     border-left-width: 0px;
     border-right-width: 0px;
     border-radius: 15px;
-    border-top-color: #2430dd;
+    border-top-color: green;
 }
 .swal-btn-sucesso{
     color: #16A34A;

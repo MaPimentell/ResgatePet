@@ -16,10 +16,10 @@
                         {{ __('Mapa') }}
                     </x-nav-link>
                     <x-nav-link :href="route('alertasUsuario')" :active="request()->routeIs('alertasUsuario')">
-                        {{ __('Seus Alertas') }}
+                        {{ __('Meus Alertas') }}
                     </x-nav-link>
                     <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
-                        {{ __('Seu Perfil') }}
+                        {{ __('Meu Perfil') }}
                     </x-nav-link>
                     <x-nav-link :href="route('animais.profile')" :active="request()->routeIs('animais.profile')">
                         {{ __('Perfil Animais') }}
@@ -80,22 +80,22 @@
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="px-4">
+            {{-- <div class="px-4">
                 <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-            </div>
+            </div> --}}
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
-
                 <x-responsive-nav-link :href="route('dashboard')">
                     {{ __('Mapa') }}
                 </x-responsive-nav-link>
 
+                <x-responsive-nav-link :href="route('profile.edit')">
+                    {{ __('Meu Perfil') }}
+                </x-responsive-nav-link>
+
                 <x-responsive-nav-link :href="route('alertasUsuario')">
-                    {{ __('Seus Alertas') }}
+                    {{ __('Meus Alertas') }}
                 </x-responsive-nav-link>
 
                 <x-responsive-nav-link :href="route('animais.profile')">

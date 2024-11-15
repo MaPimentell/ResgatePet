@@ -29,8 +29,7 @@ class AnimaisController extends Controller
 
         Log::debug($animal_id);
         
-        $animal = Animais::find($animal_id);  // Busca o animal pelo ID
-        Log::debug(json_encode($animal));
+        $animal = Animais::find($animal_id); // Busca o animal pelo ID
         
         return view('auth.animalRegister', compact('animal'));  // Retorna a view de cadastro com os dados do animal
     }
