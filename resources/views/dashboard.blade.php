@@ -67,7 +67,7 @@
                             </div>
                             <p class="text-gray-800 mb-4">Nosso projeto independente tem como missão ajudar animais perdidos a se reencontrarem com seus donos. Com a sua doação, podemos manter a plataforma ativa, conectando pessoas e promovendo a segurança dos animais. Cada contribuição faz a diferença e nos aproxima de salvar mais vidas. Junte-se a nós nessa causa e ajude a transformar histórias!</p>
                             <div class="md:flex justify-start">
-                                <div class="md:w-5/6 md:mb-0 mb-4 md:self-end">
+                                <div class="md:w-5/6 md:mb-0 mb-4 self-center">
                                     <span class="text-gray-800">Deseja nos apoiar? Você pode fazer uma doação via Pix! Basta escanear o QR Code com o seu aplicativo. Sua contribuição é essencial para que possamos continuar nosso trabalho em prol dos animais!</span>                                                                    </div>
                                 <div class="md:w-1/6 md:flex justify-center">
                                     <img src="{{ asset('images/qr_code.jpeg') }}" alt="QR Code" class="w-28">
