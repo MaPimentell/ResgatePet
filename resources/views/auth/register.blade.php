@@ -137,10 +137,7 @@
                     <h2 class="font-semibold">8. Alterações nos Termos de Uso</h2>
                     <p class="px-3">Reservamo-nos o direito de alterar estes Termos de Uso a qualquer momento. Sempre que houver mudanças, informaremos os usuários através do site ou e-mail cadastrado. O uso contínuo da plataforma após as alterações será considerado como aceitação dos novos termos.</p>
                 
-                    <h2 class="font-semibold">9. Contato</h2>
-                    <p class="px-3">Caso tenha dúvidas sobre os Termos de Uso ou sobre a plataforma, entre em contato conosco por meio do e-mail de suporte fornecido no site.</p>
-                
-                    <h2 class="font-semibold">10. Legislação Aplicável</h2>
+                    <h2 class="font-semibold">9. Legislação Aplicável</h2>
                     <p class="px-3">Este Termo de Uso está sujeito à legislação vigente no Brasil, incluindo as disposições da Lei Geral de Proteção de Dados (LGPD).</p>
                 
                     <p class="px-3">Ao clicar em "Aceito os Termos de Uso" durante o cadastro, você confirma que leu, compreendeu e concorda com todas as cláusulas acima.</p>
