@@ -60,7 +60,7 @@
                                                 <form action="{{ route('desativaAlerta', ['alerta_id' => $alerta->id]) }}" method="POST" class="w-full">
                                                     @csrf
                                                     @method('PUT')
-                                                    <button class="md:text-sm text-xs w-full px-2 py-2 border font-semibold border-red-500 hover:bg-red-500 hover:text-white text-red-500 bg-transparent rounded-2xl transition ease-in-out duration-300">
+                                                    <button class="md:text-sm text-xs w-full px-2 py-2 border font-semibold border-gray-500 hover:bg-gray-500 hover:text-white text-gray-500 bg-transparent rounded-2xl transition ease-in-out duration-300">
                                                         Desativar
                                                     </button>
                                                 </form>
@@ -138,7 +138,7 @@
                                                         <form action="{{ route('alertasUsuario.animalResgatado', ['alerta_id' => $alerta->id]) }}" method="POST" class="md:flex justify-center w-full">
                                                             @csrf
                                                             @method('PUT')
-                                                            <button type="submit" class="md:text-sm text-xs w-full px-8 py-2 whitespace-nowrap border font-semibold border-green-600 hover:bg-green-600 hover:text-white text-green-600 bg-transparent rounded-2xl transition ease-in-out duration-300">
+                                                            <button type="submit" class="md:text-sm text-xs w-full px-8 py-2 whitespace-nowrap border font-semibold border-red-600 hover:bg-red-600 hover:text-white text-red-600 bg-transparent rounded-2xl transition ease-in-out duration-300">
                                                                 Meu pet foi resgatado
                                                             </button>
                                                         </form>
