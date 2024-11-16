@@ -21,7 +21,7 @@
     </head>
 
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-gray-100 pb-10">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -37,14 +37,14 @@
             <main>
                 {{ $slot }}
             </main>
-            <footer class="bg-white text-gray-900 border-t-2 border-gray-300  shadow-[rgba(0,0,7,0.1)_0px_0px_13px_2px] py-6 mt-10">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <p>&copy; {{ date('Y') }} {{ config('app.name', 'Laravel') }}. Todos os direitos reservados.</p>
-                    <p>Este projeto foi desenvolvido com o objetivo de apresentar o PFC.</p>
-
-                </div>
-            </footer>
+            
         </div>
+        <footer class="bg-white text-gray-900 border-t-2 border-gray-300  shadow-[rgba(0,0,7,0.1)_0px_0px_13px_2px] py-6">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p>&copy; {{ date('Y') }} {{ config('app.name', 'Laravel') }}. Todos os direitos reservados.</p>
+                <p>Este projeto foi desenvolvido com o objetivo de apresentar o PFC.</p>
+            </div>
+        </footer>
         @stack('scripts')
     </body>
 </html>
