@@ -13,6 +13,7 @@ export default defineConfig({
                 'resources/js/cadastro.js',
                 'resources/js/perfilAnimais.js',
                 'resources/js/animalRegister.js',
+                'resources/js/forgot-password.js',
             ],
             refresh: true,
         }),

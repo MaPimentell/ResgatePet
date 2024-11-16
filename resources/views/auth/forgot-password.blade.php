@@ -1,4 +1,3 @@
-
 <x-guest-layout>
     <a href="{{ route('login') }}"
         class="items-center flex gap-1 mb-4 mx-4 md:mx-0 md:text-normal text-sm hover:underline">
@@ -10,7 +9,7 @@
     </div>
 
     <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <x-auth-session-status class="mb-4" id="status_resetaSenha" :status="session('status')" />
 
     <form method="POST" action="{{ route('password.email') }}">
         @csrf
@@ -18,14 +17,17 @@
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            <x-text-input placeholder="Digite seu email" id="email" class="block mt-1 w-full placeholder-slate-400 bg-slate-50" type="email" name="email" :value="old('email')" required autofocus />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
+            <x-primary-button id="btn-resetaSenha" class="group">
                 {{ __('Email Password Reset Link') }}
             </x-primary-button>
         </div>
     </form>
+@push('scripts')
+    @vite('resources/js/forgot-password.js')
+@endpush
 </x-guest-layout>
