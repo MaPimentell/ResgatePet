@@ -138,7 +138,7 @@ import Swal from 'sweetalert2';
                                 </dl>
                             </div>
                             <div class="w-full">
-                                <button class="rounded-lg w-full py-1 text-red font-medium text-white  bg-blue-600 border border-blue-600 hover:bg-transparent hover:text-blue-600"
+                                <button class="rounded-lg w-full py-1 text-red font-medium text-white  bg-green-600 border border-green-600 hover:bg-transparent hover:text-green-600"
                                 onclick="window.location.href='/contato/${alerta.animal_id}'">
                                     Contatar
                                  </button>

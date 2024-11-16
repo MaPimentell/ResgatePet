@@ -8,6 +8,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
@@ -36,11 +37,18 @@ class RegisteredUserController extends Controller
             'telefone' => ['required', 'max:15'],
         ]);
 
+        if($request->input('termos') == 'on'){
+            $termos = 1;
+        } else {
+            $termos = 0;
+        }
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'telefone' => $request->telefone,
+            'termos' => $termos
         ]);
 
         event(new Registered($user));
