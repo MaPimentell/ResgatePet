@@ -52,7 +52,7 @@
                 <span>Concordo com os Termos de Uso</span>
             </label>
             <a id="abreModal" class="text-blue-600 hover:underline">
-               Leia os Termos de Uso
+               Ler os Termos de Uso
             </a>
         </div>
 
