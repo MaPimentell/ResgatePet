@@ -12,7 +12,7 @@
             <!-- Caixa de conteúdo com estilo de borda e sombra -->
             <div class="bg-white overflow-hidden border-t-2 border-red-600 shadow-sm rounded-lg mb-10">
                 <div class="p-6 text-gray-900">
-                    <div class="md:flex gap-1 items-center md:justify-between mb-5">
+                    <div class="md:flex gap-1 items-center md:justify-between mb-9">
                         <!-- Título da seção "Animais cadastrados" -->
                         <div>
                             <h2 class="md:mb-0 mb-4 font-medium md:font-bold text-xl text-gray-900">
@@ -25,7 +25,7 @@
                             <!-- Link para a rota de cadastro de animais -->
                             <a href="{{ route('animais.cadastro', 0)}}" class="w-full">
                                 <!-- Botão para cadastrar um novo animal -->
-                                <button class="w-full px-3 py-2 rounded-md border border-red-600 bg-red-600 hover:bg-transparent hover:text-red-600 text-white font-medium space-x-1 transition ease-in-out duration-300">
+                                <button class="w-full px-3 py-2 rounded-lg border border-red-600 bg-red-600 hover:bg-transparent hover:text-red-600 text-white font-medium space-x-1 transition ease-in-out duration-300">
                                     <span>Cadastrar novo animal</span> <span class="font-semibold text-xl">+</span>
                                 </button>
                             </a>
@@ -55,13 +55,13 @@
                                         <div class="flex md:justify-normal justify-between space-x-4 mt-5">
                                             <!-- Botão para excluir o animal -->
                                             <div class="md:flex md:gap-0 mb-2 md:mb-0 md:space-x-4">
-                                                <button data-id="{{ $animal->id }}" class="btn-deletaAnimal md:text-sm text-xs px-6 py-2 border font-semibold border-red-500 hover:bg-red-500 hover:text-white text-red-500 bg-transparent rounded-md transition ease-in-out duration-300">
+                                                <button data-id="{{ $animal->id }}" class="btn-deletaAnimal md:text-sm text-xs px-6 py-2 border font-semibold border-red-500 hover:bg-red-500 hover:text-white text-red-500 bg-transparent rounded-2xl transition ease-in-out duration-300">
                                                     Excluir
                                                 </button>
                                             </div>
                                             <!-- Link para editar o animal -->
                                             <div>
-                                                <a href="{{ route('animais.cadastro', $animal->id) }}" class="flex justify-center px-6 py-2 border md:text-sm text-xs font-semibold border-blue-600 hover:bg-blue-600 hover:text-white text-blue-600 bg-transparent rounded-md transition ease-in-out duration-300">
+                                                <a href="{{ route('animais.cadastro', $animal->id) }}" class="flex justify-center px-6 py-2 border md:text-sm text-xs font-semibold border-blue-600 hover:bg-blue-600 hover:text-white text-blue-600 bg-transparent rounded-2xl transition ease-in-out duration-300">
                                                     Editar
                                                 </a>
                                             </div>
