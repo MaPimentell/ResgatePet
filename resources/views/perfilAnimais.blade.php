@@ -25,7 +25,7 @@
                             <!-- Link para a rota de cadastro de animais -->
                             <a href="{{ route('animais.cadastro', 0)}}" class="w-full">
                                 <!-- Botão para cadastrar um novo animal -->
-                                <button class="w-full px-3 py-2 rounded-lg border border-red-600 bg-red-600 hover:bg-transparent hover:text-red-600 text-white font-medium space-x-1 transition ease-in-out duration-300">
+                                <button class="w-full px-3 py-2 rounded-lg border border-red-600 bg-red-600 hover:bg-transparent hover:text-red-600 text-white font-semibold space-x-1 transition ease-in-out duration-300">
                                     <span>Cadastrar novo animal</span> <span class="font-semibold text-xl">+</span>
                                 </button>
                             </a>
