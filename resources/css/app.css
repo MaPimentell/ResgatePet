@@ -4,6 +4,12 @@
 
 
 
+/*---------------------- hover SVG Adicionar ALerta ---------------------- */
+#btnAdicionarAlerta:hover .icon {
+    fill: #DC2626; 
+}
+
+/* ------------------------- Estilo Sweet Alert -------------------------- */
 .swal-confirmar {
     background-color: green;
     font-weight: 700;
@@ -43,6 +49,9 @@
     border-radius: 15px;
     border-top-color: green;
 }
+
+
+
 .swal-btn-sucesso{
     color: #16A34A;
     font-weight: 700;
@@ -58,7 +67,6 @@
     border-color: #16A34A;
     color: white;
 }
-
 .swal-popup-sucesso{
     border-style: solid;
     border-top-width: 6px;
@@ -68,6 +76,8 @@
     border-radius: 15px;
     border-top-color: #16A34A;
 }
+
+
 
 .swal-btn-erro{
     color: #ce2929;
@@ -139,12 +149,7 @@
 }
 
 
-
-
-
-
-
-
+/* ---------------------- Estilo Localização mapa ---------------------- */
 .custom-marker {
     background-color: #005DB7; /* Cor de fundo do marcador */
     padding:6px;
@@ -154,9 +159,7 @@
     border-radius: 100px;
     box-shadow: 0 0 0 10px rgba(0, 0, 255, 0.2),
                 0 0 15px rgba(0, 0, 255, 0.6);
-
 }
-
 
 .leaflet-popup {
     min-width: 200px; /* Aumenta a largura mínima do popup */
