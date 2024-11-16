@@ -10,7 +10,7 @@
     <div class="py-7 md:py-12">
         <div class="md:max-w-6xl mx-auto sm:px-6 lg:px-8">
             <!-- Link para voltar à página anterior -->
-            <a href="{{ url()->previous() }}"
+            <a href="{{ route('dashboard') }}"
                class="items-center flex gap-1 mb-4 mx-4 md:mx-0 md:text-normal text-sm hover:text-gray-400">
                 <!-- Ícone de seta para indicar retorno -->
                 <svg class="size-4" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000">
@@ -21,7 +21,7 @@
                 Voltar
             </a>
             <!-- Card principal contendo informações de contato -->
-            <div class="bg-white m-4 overflow-hidden shadow-sm rounded-lg border-t-4 border-green-600">
+            <div class="bg-white m-4 overflow-hidden shadow-sm rounded-lg border-t-2 border-green-600">
                 <div class="p-6 text-gray-900">
                     <div class="justify-between">
                         <!-- Título centralizado com responsividade para telas menores -->

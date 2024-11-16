@@ -12,7 +12,7 @@
             <!-- Caixa de conteúdo com estilo de borda e sombra -->
             <div class="bg-white overflow-hidden border-t-2 border-red-600 shadow-sm rounded-lg mb-10">
                 <div class="p-6 text-gray-900">
-                    <div class="md:flex gap-1 items-center md:justify-between">
+                    <div class="md:flex gap-1 items-center md:justify-between mb-5">
                         <!-- Título da seção "Animais cadastrados" -->
                         <div>
                             <h2 class="md:mb-0 mb-4 font-medium md:font-bold text-xl text-gray-900">
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                     <!-- Grid para exibir a lista de animais -->
-                    <div class="md:grid grid-cols-2 gap-4 p-3">
+                    <div class="md:grid grid-cols-2 gap-4">
                         <!-- Condição para exibir mensagem se não houver animais cadastrados -->
                         @if($animais->isEmpty())
                             <div class="my-5 ml-3">

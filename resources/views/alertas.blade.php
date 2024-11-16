@@ -89,7 +89,7 @@
             </div>
 
             <!-- Seção de histórico de alertas desativados -->
-            <div class="bg-white overflow-hidden border-t-2 border-gray-400 shadow-sm rounded-lg">
+            <div class="bg-white overflow-hidden border-t-2 border-red-600 shadow-sm rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div>
                         <!-- Título para a seção de histórico de alertas -->
@@ -115,12 +115,17 @@
                                     <!-- Exibe apenas alertas desativados (onde 'exibir' é 0) -->
                                     @if($alerta->exibir == 0)
                                         <!-- Card para cada alerta desativado -->
-                                        <div class="border-l-4 border-gray-400 mt-10 p-5 rounded-lg" style="box-shadow: 0 5px 17px -5px rgba(0, 0, 0, 0.4);">
+                                        <div class="border-l-4 border-gray-500 mt-10 p-5 rounded-lg" style="box-shadow: 0 5px 17px -5px rgba(0, 0, 0, 0.4);">
                                             <div class="flex justify-between md:mb-0 mb-2">
                                                 <h2 class="font-semibold text-lg">{{ $alerta->nome }}</h2>
                                                 <div class="flex font-medium items-center gap-3">Inativo <div class="w-3 h-3 bg-gray-400 rounded-full shadow-lg"></div></div>
                                             </div>
-                                            <span class="text-gray-500 text-sm">Criado {{ $alerta->created_at->DiffForHumans() }}</span>
+                                            <div>
+                                                <span class="text-gray-500 text-sm">Criado {{ $alerta->created_at->DiffForHumans() }}</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-500 text-sm">{{ \Str::limit($alerta->endereco, 80) }}</span>
+                                            </div>
                                             <!-- Ações para alertas desativados -->
                                             <div class="md:flex justify-between items-center pt-5">
                                                 @if($alerta->resgatado == 0 && $alerta->exibir == 0)
