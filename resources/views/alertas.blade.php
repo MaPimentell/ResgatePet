@@ -10,7 +10,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto px-3 lg:px-8">
             <!-- Seção de status ativos de alertas -->
-            <div class="bg-white overflow-hidden border-t-4 border-green-600 shadow-sm rounded-lg mb-10">
+            <div class="bg-white overflow-hidden border-t-2 border-green-600 shadow-sm rounded-lg mb-10">
                 <div class="p-6 text-gray-900">
                     <!-- Título para a seção de status ativos -->
                     <div>
@@ -89,7 +89,7 @@
             </div>
 
             <!-- Seção de histórico de alertas desativados -->
-            <div class="bg-white overflow-hidden border-t-4 border-gray-400 shadow-sm rounded-lg">
+            <div class="bg-white overflow-hidden border-t-2 border-gray-400 shadow-sm rounded-lg">
                 <div class="p-6 text-gray-900">
                     <div>
                         <!-- Título para a seção de histórico de alertas -->

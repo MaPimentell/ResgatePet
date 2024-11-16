@@ -10,7 +10,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto px-3 lg:px-8">
             <!-- Caixa de conteúdo com estilo de borda e sombra -->
-            <div class="bg-white overflow-hidden border-t-4 border-red-600 shadow-sm rounded-lg mb-10">
+            <div class="bg-white overflow-hidden border-t-2 border-red-600 shadow-sm rounded-lg mb-10">
                 <div class="p-6 text-gray-900">
                     <div class="md:flex gap-1 items-center md:justify-between">
                         <!-- Título da seção "Animais cadastrados" -->
