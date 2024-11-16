@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\Models\Alerta;
 use App\Models\Post;
+use GuzzleHttp\Client;
+
 
 class AlertasController extends Controller
 {
@@ -19,10 +21,11 @@ class AlertasController extends Controller
         ->join('users', 'users.id', 'alertas.user_id')
         ->select(   'alertas.id',
                     'alertas.resgatado',
+                    'alertas.exibir',
+                    'alertas.endereco',
                     'alertas.created_at',
                     'animais.id as animal_id',
-                    'animais.nome',
-                    'alertas.exibir')
+                    'animais.nome')
         ->where('users.id', $user_id)
         ->orderBy('created_at', 'desc')
         ->get();
@@ -63,6 +66,29 @@ class AlertasController extends Controller
         $alerta->save();
 
         return redirect()->back()->with('desativado', 'Alerta desativado com sucesso!');
+    }
+
+    function transformaCoordenadas($latitude, $longitude)
+    {
+        $apiKey = env('OPENCAGE_API_KEY');
+        $url = "https://api.opencagedata.com/geocode/v1/json?q={$latitude}+{$longitude}&key={$apiKey}";
+
+        try {
+            $client = new Client();
+            $response = $client->get($url);
+            $data = json_decode($response->getBody(), true);
+
+            if (isset($data['results'][0]['components'])) {
+                $cidade = $data['results'][0]['components']['city'] ?? 'Cidade não encontrada';
+                $rua = $data['results'][0]['components']['road'] ?? 'Rua não encontrada';
+    
+                return (string) "{$rua}, {$cidade}";
+            }
+
+            return 'Endereço não encontrado';
+        } catch (RequestException $e) {
+            return 'Erro ao acessar a API: ' . $e->getMessage();
+        }
     }
 
 }

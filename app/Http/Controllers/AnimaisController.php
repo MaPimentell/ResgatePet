@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\Models\Animais;
 use App\Models\Alerta;
+use App\Http\Controllers\AlertasController;
 use Carbon\Carbon;
 use App\Models\Post;
 use Illuminate\Support\Facades\Storage;
@@ -134,11 +135,15 @@ class AnimaisController extends Controller
     // Cria um alerta para um animal específico
     public function storeAlerta(Request $request){
 
-        // Busca os dados do animal e sua localização
         $dados = Animais::join('localizacao', 'animais.user_id', 'localizacao.user_id')
         ->select('animais.user_id', 'animais.id as animal_id', 'localizacao.id as localizacao_id')
         ->where('animais.id', $request->input('animal_id'))
         ->first();
+
+        $alertaController = new AlertasController();
+        $endereco = $alertaController->transformaCoordenadas($request->input('latitude'), $request->input('longitude'));
+
+
 
         // Cria um novo alerta para o animal
         Alerta::create([
@@ -147,6 +152,7 @@ class AnimaisController extends Controller
             'localizacao_id' => $dados->localizacao_id,
             'latitude' => $request->input('latitude'),
             'longitude' => $request->input('longitude'),
+            'endereco' => $endereco,
             'exibir' => 1  // Define o alerta como ativo
         ]);
 

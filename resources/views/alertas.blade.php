@@ -47,7 +47,12 @@
                                             </div>
                                         </div>
                                         <!-- Exibe a data de criação do alerta -->
-                                        <span class="text-gray-500 text-sm">Criado {{ $alerta->created_at->DiffForHumans() }}</span>
+                                        <div>
+                                            <span class="text-gray-500 text-sm">Criado {{ $alerta->created_at->DiffForHumans() }}</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-gray-500 text-sm">{{ \Str::limit($alerta->endereco, 80) }}</span>
+                                        </div>
                                         <!-- Botões de ações para cada alerta ativo -->
                                         <div class="md:flex md:justify-between md:flex-row md:space-x-4 flex-col mt-5">
                                             <!-- Formulário para desativar o alerta -->

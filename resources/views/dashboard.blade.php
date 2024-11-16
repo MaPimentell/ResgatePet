@@ -31,7 +31,7 @@
                         <!-- Div onde o mapa será exibido -->
                         <div id="map" class="mt-6 rounded-md h-80 md:h-[450px] w-full"></div>
                     </div>
-                    <div class="mb-14">
+                    <div class="mb-12">
                         <div class="mb-8">
                             <div class="flex gap-1 items-center ">
                                 <h2 class="flex font-semibold md:font-bold text-xl">Como funciona</h2>
@@ -58,6 +58,9 @@
                                 <span class="md:text-base text-sm text-center text-gray-800">Pronto! Agora outros usuários podem visualizar seu alerta no mapa e entrar em contato com você caso tenham alguma informação. Se quiser desativar o alerta, basta acessar a página <i>Meus Alertas</i>.</span>
                             </div>
                         </div>
+                    </div>
+                    <div class="mb-8">
+                        <hr>
                     </div>
                     <div>
                         <div class="mb-6">

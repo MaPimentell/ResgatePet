@@ -13,6 +13,7 @@ class Alerta extends Model
         'animal_id',
         'latitude',
         'longitude',
+        'endereco',
         'exibir',
         'resgatado'
     ];
