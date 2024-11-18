@@ -25,7 +25,7 @@
         <!-- Email Address -->
         <div class="mt-6">
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input placeholder="Digite seu email" id="email" class="block mt-1 w-full placeholder-slate-400 bg-slate-50" type="email" name="email" :value="old('email')" required  autocomplete="username" />
+            <x-text-input placeholder="Digite seu email" id="email" class="block mt-1 w-full placeholder-slate-400 bg-slate-50 " type="email" name="email" :value="old('email')" required  autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
@@ -43,8 +43,8 @@
         <!-- Remember Me -->
         <div class="block mt-6">
             <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                <input id="remember_me" type="checkbox" class="peer w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded" name="remember">
+                <span class="ms-2 text-sm font-medium text-gray-600 peer-checked:text-blue-600 ">{{ __('Remember me') }}</span>
             </label>
         </div>
 
