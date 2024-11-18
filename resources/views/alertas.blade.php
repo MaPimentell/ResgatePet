@@ -145,7 +145,7 @@
                                                     </div>
                                                 @elseif ($alerta->resgatado == 1 && $alerta->exibir == 0)
                                                     <!-- Indicação de que o animal foi resgatado -->
-                                                    <div class="mt-5">
+                                                    <div class="mt-5 md:mt-0">
                                                         <span class="font-medium md:text-lg">Animal Resgatado!</span>
                                                     </div>
                                                 @endif
