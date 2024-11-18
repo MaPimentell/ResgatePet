@@ -77,7 +77,7 @@
                     <h3 class="text-xl font-semibold text-gray-900 ">
                         Termos de uso
                     </h3>
-                    <button type="button" class="fechaModal text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center " data-modal-hide="modal-termos">
+                    <button type="button" class="fechaModal text-gray-400 bg-transparent hover:bg-gray-100 hover:text-blue-700 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center " data-modal-hide="modal-termos">
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
                         </svg>
@@ -146,8 +146,8 @@
                 </div>
                 <!-- Modal footer -->
                 <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b ">
-                    <button id="aceitaTermos" data-modal-hide="modal-termos" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Aceito os termos</button>
-                    <button data-modal-hide="modal-termos" type="button" class="fechaModal py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Fechar</button>
+                    <button id="aceitaTermos" data-modal-hide="modal-termos" type="button" class="text-white border border-blue-700 bg-blue-700 hover:bg-transparent hover:text-blue-700 focus:ring-4   font-medium rounded-2xl text-sm px-5 py-2.5 text-center animaton ease-out duration-300">Aceito os termos</button>
+                    <button data-modal-hide="modal-termos" type="button" class="fechaModal py-2.5 px-5 ms-3 text-sm font-medium  rounded-2xl  text-blue-700 border border-blue-700 bg-transparent hover:bg-blue-700 hover:text-white focus:z-10 focus:ring-4 focus:ring-gray-100 animaton ease-out duration-300">Fechar</button>
                 </div>
             </div>
         </div>
