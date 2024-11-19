@@ -31,7 +31,7 @@
                         <div class="md:flex">
                             <!-- Exibir imagem do animal apenas em telas menores -->
                             <div class="md:hidden flex justify-center mb-4">
-                                <img id="imagemAnimalMobile" src="{{ asset('storage/animal_photo_01_03.jpg') }}" alt="Foto do animal"
+                                <img id="imagemAnimalMobile" src="{{ asset('storage/' . $infoContato->foto) }}" alt="Foto do animal"
                                      class="object-cover w-40 h-40 rounded-full border-8 border-white drop-shadow-md">
                             </div>
                             <!-- Informações do animal -->

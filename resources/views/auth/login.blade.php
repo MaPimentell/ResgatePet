@@ -6,8 +6,8 @@
     }
 </style>
 <x-guest-layout>
-    <div class="flex justify-center mt-4">
-        <h1 id="titulo-logo" class="titulo-logo md:text-3xl tracking-tight">Resgata </h1> <h1 class="titulo-logo md:text-3xl tracking-tight text-red-600">Pet</h1>
+    <div class="flex justify-center">
+        <img class="h-36 w-38" src="{{asset('images/logo_02.png')}}" alt="Resgata Pet">
     </div>
     <div class="flex flex-col justify-start mt-7">
         <h2 class="md:text-2xl font-black tracking-tight">Acesse sua conta</h2>

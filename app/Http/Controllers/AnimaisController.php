@@ -66,7 +66,7 @@ class AnimaisController extends Controller
             $path = $request->file('fotoAnimal')->storeAs("images/animais", $filename, 'public');
         } else {
             // Caso não tenha foto, define uma foto padrão
-            $path = 'images/animais/default_pet.jpg';
+            $path = 'images/animais/default_pet.png';
         }
 
         // Formata o nome e a raça do animal
