@@ -19,7 +19,7 @@
                                 Status ativos
                             </h2>
                         </div>
-                        <span class="text-sm text-gray-600">Os alertas abaixo estão ativos no mapa e podem ser visualizados por outros usuários. Lembre-se de que os alertas serão <b>desativados automaticamente após 3 dias</b>.</span>
+                        <span class="text-sm text-gray-600">Os alertas abaixo estão ativos no mapa e podem ser visualizados por outros usuários. Lembre-se de que os alertas serão <b>desativados automaticamente após 5 dias</b>.</span>
                     </div>
                     <!-- Layout em grade para exibir os alertas ativos -->
                     <div class="md:grid grid-cols-2 gap-4">

@@ -116,24 +116,24 @@ import Swal from 'sweetalert2';
                     marker.bindPopup(`
                         <div class="max-w-xs grid justify-stretch">
                             <div class="justify-center mb-2">
-                                <h3 class="font-semibold text-center text-lg">${alerta.nome}</h3>
+                                <h3 class="font-semibold text-center md:text-lg">${alerta.nome}</h3>
                             </div>
                             <div class="flex justify-center mb-2">
                                 <img src="/storage/${alerta.foto}" alt="Foto do animal"
-                                    class="object-cover w-24 h-24 rounded-full border-4 border-white drop-shadow-md ">
+                                    class="object-cover md:w-24 md:h-24 w-20 h-20 rounded-full border-4 border-white drop-shadow-md ">
                             </div>
                             <div class="">
                                 <dl class="grid grid-cols-2 my-3 pl-2 space-y-1 justify-between items-center">
-                                    <dt class="font-bold self-start pt-1p">Animal:</dt>
+                                    <dt class="md:font-bold font-semibold self-start pt-1p">Animal:</dt>
                                     <dd class="self-start">${alerta.tipo}</dd>
 
-                                    <dt class="font-bold">Sexo:</dt>
+                                    <dt class="md:font-bold font-semibold">Sexo:</dt>
                                     <dd>${alerta.sexo === 'M' ? 'Macho' : alerta.sexo === 'F' ? 'Fêmea' : 'Outro'}</dd>
 
-                                    <dt class="font-bold">Idade:</dt>
+                                    <dt class="md:font-bold font-semibold">Idade:</dt>
                                     <dd>${alerta.idade} Ano(s)</dd>
 
-                                    <dt class="font-bold self-start">Raça:</dt>
+                                    <dt class="md:font-bold font-semibold self-start">Raça:</dt>
                                     <dd>${alerta.raca}</dd>
                                 </dl>
                             </div>

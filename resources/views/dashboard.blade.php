@@ -29,7 +29,7 @@
                         </div>
                         <span class=" md:hidden block text-sm text-gray-500 font-medium mt-4">O mapa abaixo mostra os seus alertas e os de outros donos que perderam seus animais.</span>
                         <!-- Div onde o mapa será exibido -->
-                        <div id="map" class="mt-6 rounded-md h-80 md:h-[450px] w-full"></div>
+                        <div id="map" class="mt-6 rounded-md md:h-[450px] h-[420px] w-full"></div>
                     </div>
                     <div class="mb-12">
                         <div class="mb-8">
