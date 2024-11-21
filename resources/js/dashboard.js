@@ -203,55 +203,56 @@ import Swal from 'sweetalert2';
                                 Swal.showValidationMessage('Por favor, selecione um animal cadastrado.');
                                 return null; 
                             }
-                            return selectedOption;
+
+                            const btnConfirmar = $(Swal.getConfirmButton());
+                            btnConfirmar.html('<div class="transition ease-in-out duration-800 spinner-border animate-spin inline-block w-4 h-4 border-2 border-t-2 border-transparent border-t-white rounded-full"></div>');
+
+                             // Retorna uma Promise que será resolvida ou rejeitada com o resultado do AJAX
+                            return new Promise((resolve, reject) => {
+                                obterLocalizacao();
+
+                                $.ajax({
+                                    url: '/alerta/storeAlerta',
+                                    method: 'POST',
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('input[name="_token"]').val()
+                                    },
+                                    data: {
+                                        animal_id: selectedOption,
+                                        latitude: latitude,
+                                        longitude: longitude
+                                    },
+                                    success: function(response) {
+                                        // Resolve a Promise para fechar o modal
+                                        resolve(response);
+                                    },
+                                    error: function(jqXHR, textStatus, errorThrown) {
+                                        console.error('Erro ao criar alerta:', textStatus, errorThrown);
+
+                                        // Rejeita a Promise para exibir uma mensagem de erro no modal
+                                        Swal.showValidationMessage('Erro ao criar o alerta. Por favor, tente novamente.');
+                                        reject(new Error('Erro no AJAX'));
+                                    }
+                                });
+                            });
+                            
                         }
                     }).then((result) => {
                         if (result.isConfirmed) {
 
-                            const selectedAnimalId = result.value;
-                            obterLocalizacao();
-
-
-                            $.ajax({
-                                url: '/alerta/storeAlerta',
-                                method: 'POST',
-                                headers: {
-                                    'X-CSRF-TOKEN': $('input[name="_token"]').val()
-                                },
-                                data: {
-                                    animal_id: selectedAnimalId,
-                                    latitude: latitude,
-                                    longitude: longitude
-                                },
-                                success: function(response) {
-                                    Swal.fire({
-                                        title: 'Sucesso!',
-                                        text: 'O alerta foi criado com sucesso!',
-                                        icon: 'success',
-                                        confirmButtonText: 'Ok',
-                                        customClass: {
-                                          confirmButton: 'swal-btn-sucesso',
-                                          popup: 'swal-popup-sucesso'
-                                        }
-                                      }).then((result) => {
-                                        if (result.isConfirmed) {
-                                            // Recarrega a página após clicar em OK
-                                            window.location.reload();
-                                        }
-                                    });
-                                },
-                                error: function(jqXHR, textStatus, errorThrown) {
-                                    console.error('Erro ao criar alerta:', textStatus, errorThrown);
-                                    Swal.fire({
-                                        title: 'Erro!',
-                                        text: 'Não foi possível criar o alerta.',
-                                        icon: 'error',
-                                        confirmButtonText: 'Ok',
-                                        customClass: {
-                                          confirmButton: 'swal-btn-erro',
-                                          popup: 'swal-popup-erro'
-                                        }
-                                      });
+                            Swal.fire({
+                                title: 'Sucesso!',
+                                text: 'O alerta foi criado com sucesso!',
+                                icon: 'success',
+                                confirmButtonText: 'Ok',
+                                customClass: {
+                                    confirmButton: 'swal-btn-sucesso',
+                                    popup: 'swal-popup-sucesso'
+                                }
+                                }).then((result) => {
+                                if (result.isConfirmed) {
+                                    // Recarrega a página após clicar em OK
+                                    window.location.reload();
                                 }
                             });
                         }
@@ -261,7 +262,6 @@ import Swal from 'sweetalert2';
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                console.error('Erro na requisição:', textStatus, errorThrown);
                 Swal.fire({
                     title: 'Erro!',
                     text: 'Não foi possível carregar os animais.',

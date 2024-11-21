@@ -90,7 +90,7 @@
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
         <script>
             Toastify({
-                text: "Animal Editado com sucesso!",
+                text: "Animal Editado com sucesso",
                 duration: 3000,
                 newWindow: true,
                 close: true,
@@ -105,7 +105,7 @@
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
         <script>
             Toastify({
-                text: "Animal cadastrado com sucesso!",
+                text: "Animal cadastrado com sucesso",
                 duration: 3000,
                 newWindow: true,
                 gravity: "bottom", // `top` or `bottom`

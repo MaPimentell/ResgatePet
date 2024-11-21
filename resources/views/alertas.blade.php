@@ -167,7 +167,7 @@
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
         <script>
         Toastify({
-            text: "Animal Resgatado!",
+            text: "Animal Resgatado",
             duration: 3000,
             newWindow: true,
             gravity: "bottom", // `top` or `bottom`
@@ -182,7 +182,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script>
     Toastify({
-        text: "Alerta desativado!",
+        text: "Alerta desativado",
         duration: 3000,
         newWindow: true,
         gravity: "bottom", // `top` or `bottom`
