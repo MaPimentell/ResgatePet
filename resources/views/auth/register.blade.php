@@ -146,8 +146,8 @@
                 </div>
                 <!-- Modal footer -->
                 <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b ">
-                    <button id="aceitaTermos" data-modal-hide="modal-termos" type="button" class="text-white border border-blue-700 bg-blue-700 hover:bg-transparent hover:text-blue-700 focus:ring-4   font-medium rounded-2xl text-sm px-5 py-2.5 text-center animaton ease-out duration-300">Aceito os termos</button>
-                    <button data-modal-hide="modal-termos" type="button" class="fechaModal py-2.5 px-5 ms-3 text-sm font-medium  rounded-2xl  text-blue-700 border border-blue-700 bg-transparent hover:bg-blue-700 hover:text-white focus:z-10 focus:ring-4 focus:ring-gray-100 animaton ease-out duration-300">Fechar</button>
+                    <button id="aceitaTermos" data-modal-hide="modal-termos" type="button" class="text-white border border-blue-700 bg-blue-700 hover:bg-transparent hover:text-blue-700 font-medium rounded-2xl text-sm px-5 py-2.5 text-center animaton ease-out duration-300">Aceito os termos</button>
+                    <button data-modal-hide="modal-termos" type="button" class="fechaModal py-2.5 px-5 ms-3 text-sm font-medium  rounded-2xl  text-blue-700 border border-blue-700 bg-transparent hover:bg-blue-700 hover:text-white animaton ease-out duration-300">Fechar</button>
                 </div>
             </div>
         </div>
