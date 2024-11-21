@@ -227,10 +227,17 @@ import Swal from 'sweetalert2';
                                         resolve(response);
                                     },
                                     error: function(jqXHR, textStatus, errorThrown) {
-                                        console.error('Erro ao criar alerta:', textStatus, errorThrown);
-
                                         // Rejeita a Promise para exibir uma mensagem de erro no modal
-                                        Swal.showValidationMessage('Erro ao criar o alerta. Por favor, tente novamente.');
+                                        Swal.fire({
+                                            title: 'Erro!',
+                                            text: 'Erro ao adicionar o alerta, tente novamente ou entre em contato conosco!',
+                                            icon: 'error',
+                                            confirmButtonText: 'Ok',
+                                            customClass: {
+                                                confirmButton: 'swal-btn-erro',
+                                                popup: 'swal-popup-erro'
+                                            }
+                                        });
                                         reject(new Error('Erro no AJAX'));
                                     }
                                 });
