@@ -179,7 +179,7 @@ import Swal from 'sweetalert2';
                                 <select id="customSelect" class="w-[300px] p-2 mt-5 text-sm rounded-md border">
                                     <option selected disabled>Escolha um animal...</option>
                                         ${animais.length === 0 ?
-                                            '<option disabled>Sem animais disponíveis</option>' :
+                                            '<option disabled>Sem animais cadastrados</option>' :
                                             animais.map(animal => `
                                                 <option value="${animal.id}">${animal.nome}</option>
                                             `).join('')
@@ -199,6 +199,10 @@ import Swal from 'sweetalert2';
                         },
                         preConfirm: () => {
                             const selectedOption = document.getElementById('customSelect').value;
+                            if (!selectedOption || selectedOption === "Escolha um animal...") {
+                                Swal.showValidationMessage('Por favor, selecione um animal cadastrado.');
+                                return null; 
+                            }
                             return selectedOption;
                         }
                     }).then((result) => {
