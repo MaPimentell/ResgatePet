@@ -119,7 +119,7 @@ import Swal from 'sweetalert2';
                                 <h3 class="font-semibold text-center md:text-lg">${alerta.nome}</h3>
                             </div>
                             <div class="flex justify-center mb-2">
-                                <img src="/storage/${alerta.foto}" alt="Foto do animal"
+                                <img src="${alerta.foto ? '/storage/' + alerta.foto : '/images/default_pet.png'}" alt="Foto do animal"
                                     class="object-cover md:w-24 md:h-24 w-20 h-20 rounded-full border-4 border-white drop-shadow-md ">
                             </div>
                             <div class="">

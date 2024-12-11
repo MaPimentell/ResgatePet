@@ -28,7 +28,14 @@ class AnimaisController extends Controller
     // Exibe a página de cadastro de um animal específico
     public function viewCadastro($animal_id){
        
+        $user = Auth::id();
+
         $animal = Animais::find($animal_id); // Busca o animal pelo ID
+
+        //Se o usuário não for dono redicreciona para outra página
+        if ($animal != null && $animal->user_id != $user) {
+            return redirect()->route('dashboard');
+        }
         
         return view('auth.animalRegister', compact('animal'));  // Retorna a view de cadastro com os dados do animal
     }
@@ -66,7 +73,7 @@ class AnimaisController extends Controller
             $path = $request->file('fotoAnimal')->storeAs("images/animais", $filename, 'public');
         } else {
             // Caso não tenha foto, define uma foto padrão
-            $path = 'images/animais/default_pet.png';
+            $path = null;
         }
 
         // Formata o nome e a raça do animal
