@@ -6,7 +6,7 @@
                 @if($animal)
                 <h2 class="font-semibold text-center text-lg"> Editar perfil </h2>    
                 @else
-                <h2 class="font-semibold text-center text-lg"> Cadastro de Animal </h2>
+                <h2 class="font-semibold text-center text-lg"> Dados do Animal </h2>
                 @endif
             </div>
             <form method="POST" action="{{ route('animais.store') }}" enctype="multipart/form-data">
@@ -81,7 +81,7 @@
                     <x-input-label for="sexo" :value="__('Sexo')" />
                     <label><input type="radio" name="sexo" value="M" {{ old('sexo', $animal->sexo ?? '') == 'M' ? 'checked' : '' }} required> Macho</label>
                     <label class="mx-5"><input type="radio" name="sexo" value="F" {{ old('sexo', $animal->sexo ?? '') == 'F' ? 'checked' : '' }} required> Fêmea</label>
-                    <label><input type="radio" name="sexo" value="N" {{ old('sexo', $animal->sexo ?? '') == 'N' ? 'checked' : '' }} required> Outros</label>
+                    <label><input type="radio" name="sexo" value="N" {{ old('sexo', $animal->sexo ?? '') == 'N' ? 'checked' : '' }} required> Não definido</label>
                     <x-input-error :messages="$errors->get('sexo')" class="mt-2" />
                 </div>
 
