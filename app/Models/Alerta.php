@@ -15,7 +15,8 @@ class Alerta extends Model
         'longitude',
         'endereco',
         'exibir',
-        'resgatado'
+        'resgatado',
+        'data_perdido'
     ];
 
     public function user(){

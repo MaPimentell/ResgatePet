@@ -5,6 +5,7 @@ import 'jquery-mask-plugin';
 
 //Mascára para o número de celular
 $('#celular').mask('(00) 00000-0000');
+$('#data_perdido').mask('00/00/0000');
 
 
 // Função para abrir o modal de imagem do animal ao clicar na imagem principal

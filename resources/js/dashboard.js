@@ -135,6 +135,10 @@ import Swal from 'sweetalert2';
 
                                     <dt class="md:font-bold font-semibold self-start">Raça:</dt>
                                     <dd>${alerta.raca}</dd>
+
+                                    <dt class="md:font-bold font-semibold self-start">Perdido:</dt>
+                                    <dd>${new Date(alerta.data_perdido).toLocaleDateString('pt-BR')}</dd>
+
                                 </dl>
                             </div>
                             <div class="w-full">
@@ -173,18 +177,25 @@ import Swal from 'sweetalert2';
                         html: `
                             <div class="grid justify-center">
 
-                                <p class="text-sm w-[300px] text-center">
-                                    Perdeu seu pet? Selecione qual deles e crie um alerta para que os usuários da região possam ajudar na busca.
-                                </p>
-                                <select id="customSelect" class="w-[300px] p-2 mt-5 text-sm rounded-md border">
-                                    <option selected disabled>Escolha um animal...</option>
-                                        ${animais.length === 0 ?
-                                            '<option disabled>Sem animais cadastrados</option>' :
-                                            animais.map(animal => `
-                                                <option value="${animal.id}">${animal.nome}</option>
-                                            `).join('')
-                                        }
-                                </select>
+                                <div>
+                                    <p class="text-sm w-[300px] text-center">
+                                        Perdeu seu pet? Selecione qual deles, a data que foi perdido e crie um alerta para que os usuários da região possam ajudar na busca.
+                                    </p>
+                                </div>
+                                <div class="mb-1">
+                                    <select id="customSelect" class="w-[300px] p-2 mt-5 text-sm rounded-md border">
+                                        <option selected disabled>Escolha um animal...</option>
+                                            ${animais.length === 0 ?
+                                                '<option disabled>Sem animais cadastrados</option>' :
+                                                animais.map(animal => `
+                                                    <option value="${animal.id}">${animal.nome}</option>
+                                                `).join('')
+                                            }
+                                    </select>
+                                </div>
+                                <div>
+                                    <input type="date" id="data_perdido" name="data_perdido" class="w-[300px] p-2 mt-5 text-sm rounded-md border">
+                                </div>
                             </div>
                         `,
                         showCancelButton: true,
@@ -199,8 +210,33 @@ import Swal from 'sweetalert2';
                         },
                         preConfirm: () => {
                             const selectedOption = document.getElementById('customSelect').value;
+                            const data_perdido = document.getElementById('data_perdido').value;
                             if (!selectedOption || selectedOption === "Escolha um animal...") {
                                 Swal.showValidationMessage('Por favor, selecione um animal cadastrado.');
+                                return null; 
+                            }
+
+                            if (!data_perdido || data_perdido === null) {
+                                Swal.showValidationMessage('Por favor, selecione a data que o animal foi perdido.');
+                                return null; 
+                            }
+
+                            // Validar se a data não é no futuro e não é muito no passado
+                            const hoje = new Date();
+                            const dataSelecionada = new Date(data_perdido);
+
+                            // Verificar se a data selecionada é maior que a data de hoje
+                            if (dataSelecionada > hoje) {
+                                Swal.showValidationMessage('A data não pode ser no futuro.');
+                                return null; 
+                            }
+
+                            // Verificar se a data selecionada não é muito no passado (por exemplo, mais de 10 anos atrás)
+                            const umAnoAtras = new Date();
+                            umAnoAtras.setFullYear(hoje.getFullYear() - 1);
+
+                            if (dataSelecionada < umAnoAtras) {
+                                Swal.showValidationMessage('A data não pode ser mais de 1 ano atrás.');
                                 return null; 
                             }
 
@@ -220,7 +256,8 @@ import Swal from 'sweetalert2';
                                     data: {
                                         animal_id: selectedOption,
                                         latitude: latitude,
-                                        longitude: longitude
+                                        longitude: longitude,
+                                        data_perdido: data_perdido,
                                     },
                                     success: function(response) {
                                         // Resolve a Promise para fechar o modal

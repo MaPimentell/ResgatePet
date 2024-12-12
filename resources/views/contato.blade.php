@@ -62,6 +62,8 @@
                             <div class="md:w-1/3">
                                 <p class="text-center font-medium text-xl mb-5">Informações de contato</p>
                                 <dl class="grid grid-cols-2 mb-5 justify-center md:px-6 px-5">
+                                    <dt class="font-medium md:text-lg">Perdido em:</dt>
+                                    <dd id="data_perdido" class="md:text-lg justify-self-end">{{ $data_perdido }}</dd>
                                     <dt class="font-medium md:text-lg">Responsável: </dt>
                                     <dd class="md:text-lg justify-self-end">{{ implode(' ', array_slice(explode(' ', $infoContato->name), 0, 2)) }}</dd>
                                     <dt class="font-medium md:text-lg">Telefone:</dt>

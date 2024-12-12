@@ -75,7 +75,7 @@
                     <x-text-input placeholder="Digite a idade" id="idade" class="block mt-1 w-full placeholder-slate-400 bg-slate-50" type="number" name="idade" value="{{ old('idade', $animal->idade ?? '') }}" required autocomplete="idade" max="999" min="0" />
                     <x-input-error :messages="$errors->get('idade')" class="mt-2" />
                 </div>
-
+                
                 <!-- Sexo -->
                 <div class="mt-4">
                     <x-input-label for="sexo" :value="__('Sexo')" />

@@ -160,7 +160,8 @@ class AnimaisController extends Controller
             'latitude' => $request->input('latitude'),
             'longitude' => $request->input('longitude'),
             'endereco' => $endereco,
-            'exibir' => 1  // Define o alerta como ativo
+            'exibir' => 1,  // Define o alerta como ativo
+            'data_perdido' => $request->input('data_perdido')
         ]);
 
         return redirect()->back();  // Redireciona de volta para a página anterior
